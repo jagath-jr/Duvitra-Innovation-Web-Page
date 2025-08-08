@@ -1,0 +1,122 @@
+#main-content {
+flex: 1; /* Allows main content to take remaining vertical space */
+}
+
+/* Hero Section Styles */
+#hero-section {
+background: linear-gradient(to right, #e0f7fa, #b2ebf2, #80deea, #4dd0e1, #26c6da, #00bcd4, #26a69a, #43a047);
+color: #fff;
+text-align: center;
+padding: 100px 20px;
+}
+
+.hero-container {
+max-width: 960px;
+margin: 0 auto;
+}
+
+.hero-title {
+font-size: 2.5rem;
+margin-bottom: 15px;
+}
+
+.hero-subtitle {
+font-size: 1.1rem;
+margin-bottom: 30px;
+}
+
+.hero-buttons {
+display: flex;
+justify-content: center;
+gap: 20px;
+}
+
+.button {
+display: inline-block;
+padding: 12px 25px;
+border-radius: 5px;
+text-decoration: none;
+font-size: 1rem;
+transition: background-color 0.3s ease;
+border: none;
+cursor: pointer;
+}
+
+.primary-button {
+background-color: #333;
+color: #fff;
+}
+
+.secondary-button {
+background-color: transparent;
+color: #333;
+border: 1px solid #333;
+}
+
+.primary-button:hover {
+background-color: #555;
+}
+
+.secondary-button:hover {
+background-color: #eee;
+}
+
+/* Placeholder Content Section Styles */
+.content-section {
+padding: 80px 20px;
+text-align: center;
+}
+
+.content-section .container {
+max-width: 800px;
+margin: 0 auto;
+}
+
+.content-section h2 {
+font-size: 2rem;
+margin-bottom: 20px;
+color: #333;
+}
+
+.content-section p {
+color: #666;
+margin-bottom: 30px;
+}
+
+.bg-light {
+background-color: #f9f9f9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+#hero-section {
+padding: 80px 15px;
+}
+
+.hero-title {
+font-size: 2rem;
+}
+
+.hero-subtitle {
+font-size: 1rem;
+}
+
+.hero-buttons {
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+.button {
+width: 80%;
+text-align: center;
+}
+
+.content-section {
+padding: 60px 15px;
+}
+
+.content-section h2 {
+font-size: 1.75rem;
+}
+}

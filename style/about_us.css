@@ -1,0 +1,332 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* About Us Section */
+.about-us {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.about-us-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.about-us-image {
+    flex: 1 1 400px;
+    max-width: 500px;
+}
+
+.about-us-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.about-us-content {
+    flex: 1 1 500px;
+    max-width: 600px;
+}
+
+.about-us-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.about-us-content .tagline {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Full Service Section */
+.full-service {
+    padding: 60px 20px;
+    text-align: justify;
+    background-color: white;
+}
+
+.full-service-container p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .about-us-container {
+    
+        text-align: center;
+    }
+
+    .about-us-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-us-content .tagline {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us-content h1 {
+        font-size: 2rem;
+    }
+
+    .about-us-content .tagline {
+        font-size: 1.1rem;
+    }
+
+    .full-service-container p {
+        font-size: 1rem;
+    }
+
+    .about-us, .full-service {
+        padding: 40px 15px;
+    }
+}
+
+/* Container for centering content */
+.container-fa01 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+/* Why Choose Us Section Styling */
+#why-choose-us-fa01 {
+
+    text-align: center;
+}
+
+#why-choose-us-fa01 h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+/* Gradient text effect for the company name */
+#why-choose-us-fa01 h2 span {
+   background: linear-gradient(90deg, #00c6ff, #c10465);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Grid for the feature cards */
+.features-grid-fa01 {
+    display: grid;
+    /* Create 3 equal columns on desktop */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Individual Feature Card */
+.feature-card-fa01 {
+    min-height: 15rem;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Aligns content to the bottom */
+
+    /* Placeholder background image - replace with your actual image */
+    background-image: url('../img/about_us/Rectangle 3361.png');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+    /* Animation initial state (for JavaScript) */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Make cards visible when the 'visible' class is added by JS */
+.feature-card-fa01.visible-fa01 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add a subtle lift effect on hover */
+.feature-card-fa01:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Semi-transparent overlay with blur effect */
+.card-content-fa01 {
+    background-color: rgba(122, 122, 122, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* For Safari */
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 10rem;
+}
+
+.feature-stat-fa01 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+}
+
+.feature-title-fa01 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.card-content-fa01 p:last-child {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    text-align: justify;
+}
+
+/* Staggered animation delays */
+.feature-card-fa01:nth-child(2) {
+    transition-delay: 0.2s;
+}
+.feature-card-fa01:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 992px) {
+    /* Stack cards into 1 column on tablets and smaller */
+    .features-grid-fa01 {
+        grid-template-columns: 1fr;
+    }
+    #why-choose-us-fa01 h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ================================================ */
+/* WHY CHOOSE US SECTION STYLES (#wcu-section)
+/* ================================================ */
+
+/* Section container */
+#wcu-section {
+    padding: 80px 20px; /* Vertical and horizontal padding */
+    text-align: center;
+}
+
+.wcu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Header: Title and Subtitle */
+.wcu-header {
+    margin-bottom: 60px;
+}
+
+.wcu-title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.wcu-subtitle {
+    font-size: 1.2rem;
+    color: var(--subtitle-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid for the feature cards */
+.wcu-features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Space between cards */
+}
+
+/* Individual Feature Card */
+.wcu-feature-card {
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: left;
+    flex: 1 1 18.75rem; /* Flex properties for responsive wrapping */
+    max-width: 18.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Animation initial state */
+    opacity: 0;
+    transform: translateY(20px);
+    background-color: black;
+}
+
+.wcu-feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.wcu-feature-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ffffff; /* White underline */
+    padding-bottom: 10px;
+    display: inline-block;
+    color:white;
+    height: 5rem;
+}
+
+.wcu-feature-card p {
+    color: white;
+}
+
+/* Animation final state (triggered by JS) */
+.wcu-feature-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ================================================ */
+/* RESPONSIVE DESIGN (Mobile)
+/* ================================================ */
+@media (max-width: 768px) {
+    #wcu-section {
+        padding: 60px 15px;
+    }
+
+    .wcu-title {
+        font-size: 2.2rem;
+    }
+
+    .wcu-subtitle {
+        font-size: 1rem;
+    }
+
+    .wcu-features-grid {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center;
+        gap: 20px;
+    }
+
+    .wcu-feature-card {
+        width: 80%;
+        max-width: 100%; /* Ensure cards take full width */
+        flex-basis: auto;
+    }
+}
