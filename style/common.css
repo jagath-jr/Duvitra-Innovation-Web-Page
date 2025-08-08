@@ -3,6 +3,7 @@ body {
   background: linear-gradient(120deg, #ffffff 0%, #ffffff 100%);
   margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
+  padding-top: 120px;
 }
 
 .header-container {
@@ -13,7 +14,19 @@ body {
   height: 120px;
   padding: 0 2rem; /* Added padding for spacing on all screens */
 }
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: ;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
 
+.header-container.hide {
+  transform: translateY(-100%);
+}
 .navbar-logo {
   height: 6rem;
   width: auto;
@@ -88,7 +101,9 @@ body {
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     z-index: 1000;
   }
-
+.navbar.hide-on-scroll {
+    transform: translateY(-150%) !important;
+  }
   /* Active state for the mobile menu */
   .navbar.active {
     transform: translateY(0); /* Slide menu into view */

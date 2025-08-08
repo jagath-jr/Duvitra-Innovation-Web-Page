@@ -1,0 +1,204 @@
+/* Main container for the two sections */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-container-unique {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    align-items: flex-start; /* Align items to the top */
+}
+
+/* Left Content Section */
+.content-section-unique {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.content-section-unique h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+}
+
+.content-section-unique .subtitle-unique {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.content-section-unique .description-unique {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.illustration-unique img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Right Form Section */
+.form-section-unique {
+    flex: 1;
+    max-width: 500px;
+}
+
+.card-unique {
+    background-color: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9e9e9;
+    overflow: hidden;
+}
+
+/* Tab Styles */
+.tab-container-unique {
+    display: flex;
+    background-color: #f0f0f0;
+}
+
+.tab-btn-unique {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab-btn-unique:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-btn-unique.active {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+}
+
+/* Tab Content */
+.tab-content-unique {
+    display: none;
+    padding: 2rem;
+}
+
+.tab-content-unique.active {
+    display: block;
+}
+
+.form-section-unique h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.form-intro-unique {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.form-group-unique {
+    margin-bottom: 1.5rem;
+}
+
+.form-group-unique label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.form-group-unique input,
+.form-group-unique textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Important for padding */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group-unique input:focus,
+.form-group-unique textarea:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+.submit-btn-unique {
+    width: 100%;
+    padding: 1rem;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn-unique:hover {
+    background-color: #333;
+}
+
+/* Map Placeholder */
+.map-placeholder-unique {
+    width: 100%;
+    height: 450px; /* Adjust as needed */
+    background-color: #e9e9e9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .main-container-unique {
+        flex-direction: column;
+    }
+
+    .content-section-unique {
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .illustration-unique {
+        margin-bottom: 2rem;
+    }
+
+    .form-section-unique {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 1rem;
+    }
+
+    .content-section-unique h1 {
+        font-size: 2.2rem;
+    }
+
+    .tab-content-unique {
+        padding: 1.5rem;
+    }
+}
