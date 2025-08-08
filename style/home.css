@@ -473,19 +473,15 @@
     }
 }
 
-/* Container to center content and set a max-width */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 /*
 --- Services Section Styling ---
 */
 .services-section {
-    padding: 60px 0; /* Vertical padding for the section */
+    padding: 60px 0;
+    background-color: #fff;
+    /* Remove overflow: hidden if present */
 }
+
 
 /* Grid layout for the two columns */
 .services-grid {
@@ -507,7 +503,22 @@
     color: #555;
     margin-bottom: 30px;
 }
+section:not(.services-section) {
+    position: relative;
+    z-index: 1;
+}
+.service-card-inner {
+    cursor: pointer; /* Shows it's clickable */
+    transition: transform 0.6s ease; /* Fallback for non-GSAP browsers */
+    transform-style: preserve-3d;
+}
 
+/* Prevent text selection when clicking */
+.service-card-front, 
+.service-card-back {
+    user-select: none;
+    -webkit-user-select: none;
+}
 .intro-image-container {
     width: 100%;
 }
@@ -519,27 +530,59 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-
 /* Right Column: Service List */
 .service-list {
     display: flex;
     flex-direction: column;
     gap: 30px; /* Space between service items */
-    padding-top: 10px; /* Align content slightly better with the title */
+    padding-top: 1.5rem; /* Align content slightly better with the title */
 }
 
+/*
+--- Card Flip Styling ---
+*/
+
+/* Service item now acts as a 3D container */
 .service-item {
-    padding: 3.3rem;
-    border: 1px solid #e0e0e0; /* Light border */
+    perspective: 1000px; /* Creates the 3D space */
+    background-color: transparent; /* Remove background from the container */
+    border: none;
+     /* Give it a height */
+    height: 12rem;
+}
+
+/* The inner element that will be flipped */
+.service-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Shared styles for both front and back faces */
+.service-card-front,
+.service-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* For Safari */
+    backface-visibility: hidden; /* Hides the back of the element when flipped */
+
+    /* Re-apply original item styles here */
+    padding: 2.5rem;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
     background-color: #f9f9f9;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box; /* Ensures padding doesn't affect width/height */
 }
 
-.service-item:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Enhanced shadow on hover */
+/* Position the back face behind the front face */
+.service-card-back {
+    transform: rotateX(180deg);
 }
+
 
 .service-item .service-title {
     font-size: 1.5rem; /* 24px */
@@ -586,15 +629,14 @@
         padding-top: 0; /* Remove top padding on mobile */
     }
 
-    .service-intro .section-title {
-        text-align: center;
-    }
-
+    .service-intro .section-title,
     .service-intro .section-description {
         text-align: center;
     }
+    .service-item {
+        min-height: 10rem; /* Ensure consistent touch area */
+    }
 }
-
 
 
 /* --- Container for consistent centering and padding --- */
