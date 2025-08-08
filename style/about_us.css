@@ -8,7 +8,7 @@ body {
 
 /* About Us Section */
 .about-us {
-    padding: 60px 20px;
+    padding: 6.563rem 1.25rem;
     background-color: #fff;
 }
 
@@ -93,7 +93,7 @@ body {
     }
 
     .about-us, .full-service {
-        padding: 40px 15px;
+        padding: 5.625rem 0.938rem;
     }
 }
 
