@@ -190,9 +190,7 @@
 }
 
 @media (max-width: 576px) {
-    body {
-        padding: 1rem;
-    }
+
 
     .content-section-unique h1 {
         font-size: 2.2rem;
