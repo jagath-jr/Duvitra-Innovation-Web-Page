@@ -1,0 +1,856 @@
+/* Hero Section Styles */
+.hero {
+    /* Creates the gradient background */
+    background: linear-gradient(to right, #a8e0d8, #54b4d3);
+    /* Ensures the section takes the full viewport height */
+    height: 100vh;
+    /* Flexbox for centering content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000;
+    padding: 0 20px;
+    position: relative;
+    top:-8rem;
+    height: 40rem;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-title {
+    /* Styling for the main headline */
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    /* Styling for the smaller text under the headline */
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    /* Flexbox for button alignment */
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Space between buttons */
+}
+
+/* General Button Styles */
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Primary Button Styles */
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+}
+
+/* Secondary Button Styles */
+.btn-secondary {
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.btn-secondary:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Stacks buttons on smaller screens */
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px; /* Prevents buttons from being too wide */
+    }
+}
+ /*========Stats Section Styling ==========*/
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 4rem; /* Space between the items */
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto; /* Center the section */
+            color: #000;
+            text-align: left;
+        }
+
+        .stats-item {
+            position: relative; /* Needed for the pseudo-element line */
+            padding-left: 20px; /* Space for the decorative line */
+            max-width: 300px; /* Max width for each item */
+        }
+
+        /* The decorative vertical line with a gradient */
+        .stats-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 4px;
+            height: 90%; /* Adjust height as needed */
+            background: linear-gradient(to bottom, #10e0a4, #00b4d8);
+            border-radius: 2px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem; /* e.g., 56px */
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-title {
+            font-size: 1.125rem; /* e.g., 18px */
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .stats-item p {
+            font-size: 1rem; /* e.g., 16px */
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .stats-section {
+                flex-direction: row; /* Keep horizontal layout */
+                flex-wrap: wrap; /* Allow items to wrap if needed */
+                gap: 1.5rem; /* Reduce gap between items */
+                padding: 40px 20px; /* Reduce padding */
+                justify-content: space-around; /* Better spacing for mobile */
+            }
+
+            .stats-item {
+                max-width: 150px; /* Reduce max width */
+                padding-left: 15px; /* Adjust padding */
+            }
+
+            .stats-item::before {
+                height: 85%; /* Adjust line height */
+            }
+
+            .stat-number {
+                font-size: 2rem; /* Reduce number size */
+            }
+
+            .stat-title {
+                font-size: 1rem; /* Reduce title size */
+                margin-bottom: 0.5rem;
+            }
+
+            .stats-item p {
+                font-size: 0.875rem; /* Reduce paragraph text size */
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-section {
+                gap: 1rem; /* Further reduce gap */
+                padding: 30px 15px;
+            }
+
+            .stats-item {
+                max-width: 120px; /* More compact */
+                padding-left: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .stat-title {
+                font-size: 0.875rem;
+            }
+
+            .stats-item p {
+                font-size: 0.75rem;
+            }
+        }
+
+/*========About Us Section========*/
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem; /* Adjust space between image and text */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 0.2rem;
+            color: #000;
+        }
+
+        .about-image-container {
+            flex-basis: 50%; /* Image takes up half the space */
+            border-radius: 16px; /* Rounded corners for the image */
+            overflow: hidden; /* Ensures the image respects the border-radius */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 85%;
+        }
+
+        .about-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            flex-basis: 50%; /* Text takes up the other half */
+            margin: 0 1rem;
+        }
+
+        .about-heading {
+            font-size: 3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #000000;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-subheading {
+            font-size: 2rem; /* 36px */
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-description {
+            font-size: 1.125rem; /* 18px */
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .btn-dark {
+            display: inline-block;
+            background-color: #111;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 25px; /* Pill-shaped button */
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease-out;
+        }
+
+        .btn-dark:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Responsive Adjustments for About Section --- */
+        @media (max-width: 992px) {
+            .about-section {
+                flex-direction: column; /* Stack image and text vertically */
+                text-align: center;
+            }
+        }
+
+/* Main content container */
+.main-content_what-we-offer-a1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1.5rem; /* Vertical and horizontal padding */
+    min-height: 80vh; /* Ensure it takes up a good portion of the screen */
+}
+
+.offerings-section_what-we-offer-a1 {
+    width: 100%;
+    max-width: 1100px; /* Max width of the section */
+}
+
+/* Grid layout for the offerings */
+.offerings-grid_what-we-offer-a1 {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to a single column for mobile */
+    gap: 0; /* No gap as borders will handle separation */
+    /* Removed container-level borders */
+}
+
+/* Individual item styling */
+.offering-item_what-we-offer-a1 {
+    padding: 2.5rem;
+    text-align: center;
+    /* Apply bottom border for separation in mobile view */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Remove the bottom border from the very last item in the list */
+.offering-item_what-we-offer-a1:last-child {
+    border-bottom: none;
+}
+
+
+/* Specific styling for the main intro item */
+.intro-item_what-we-offer-a1 {
+    text-align: left;
+}
+
+.section-title_what-we-offer-a1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.section-description_what-we-offer-a1 {
+    font-size: 1rem;
+    color: #555;
+    max-width: 450px; /* Limit line length for readability */
+}
+
+/* Icon styling */
+.icon_what-we-offer-a1 {
+    margin-bottom: 1.5rem;
+    width: 50px; /* Control icon size */
+    height: 50px;
+    stroke: #333; /* Set the color of the icon lines */
+}
+
+/* Title for each offering */
+.offering-title_what-we-offer-a1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+/* Paragraph text for each offering */
+.offering-item_what-we-offer-a1 p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* Responsive Design: Media Query for tablets and desktops */
+@media (min-width: 768px) {
+    /* Switch to a 2-column grid on larger screens */
+    .offerings-grid_what-we-offer-a1 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Reset all borders for items in desktop view first */
+    .offering-item_what-we-offer-a1 {
+        border: none;
+    }
+
+    /* Add right border to the first item in each row (the left column) */
+    .offerings-grid_what-we-offer-a1 .offering-item_what-we-offer-a1:nth-child(2n-1) {
+        border-right: 1px solid #e0e0e0;
+    }
+
+    /* Add bottom border to the first two items (the top row) */
+    .offerings-grid_what-we-offer-a1 .offering-item_what-we-offer-a1:nth-child(-n+2) {
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Center the text for all items on larger screens */
+    .offering-item_what-we-offer-a1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .intro-item_what-we-offer-a1 {
+        align-items: flex-start; /* Re-align intro item to the left */
+        text-align: left;
+    }
+}
+
+/* * =====================================================================
+ * Logo Slider Section Styling
+ * ===================================================================== */
+.logo-slider-section-2025 {
+    width: 100%;
+    padding: 4rem 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* * =====================================================================
+ * Logo Slider Container
+ * ===================================================================== */
+.logo-slider-2025 {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* * =====================================================================
+ * Logos Slide Track
+ * ===================================================================== */
+.logos-slide-2025 {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: max-content; /* Important for infinite effect */
+    animation: slide-2025 35s linear infinite;
+    will-change: transform; /* Optimizes for animation performance */
+}
+
+/* * =====================================================================
+ * Logo Images
+ * ===================================================================== */
+.logos-slide-2025 img {
+    height: 40px;
+    width: auto;
+    flex-shrink: 0; /* Prevents logos from shrinking */
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* * =====================================================================
+ * Hover Effects
+ * ===================================================================== */
+.logo-slider-2025:hover .logos-slide-2025 {
+    animation-play-state: paused;
+}
+
+.logos-slide-2025 img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* * =====================================================================
+ * Keyframe Animation - Updated for seamless looping
+ * ===================================================================== */
+@keyframes slide-2025 {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Only translate half way since we duplicated content */
+    }
+}
+
+/* * =====================================================================
+ * Responsive Design
+ * ===================================================================== */
+@media (max-width: 768px) {
+    .logos-slide-2025 {
+        gap: 2rem;
+    }
+    .logos-slide-2025 img {
+        height: 30px;
+    }
+}
+
+/* Container to center content and set a max-width */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/*
+--- Services Section Styling ---
+*/
+.services-section {
+    padding: 60px 0; /* Vertical padding for the section */
+}
+
+/* Grid layout for the two columns */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 50px; /* Space between the columns */
+    align-items: start; /* Align items to the top */
+}
+
+/* Left Column: Introduction */
+.service-intro .section-title {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.service-intro .section-description {
+    font-size: 1rem; /* 16px */
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.intro-image-container {
+    width: 100%;
+}
+
+.intro-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+
+/* Right Column: Service List */
+.service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between service items */
+    padding-top: 10px; /* Align content slightly better with the title */
+}
+
+.service-item {
+    padding: 3.3rem;
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Enhanced shadow on hover */
+}
+
+.service-item .service-title {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.service-item .service-description {
+    font-size: 1rem; /* 16px */
+    color: #555;
+    margin-bottom: 0;
+}
+
+
+/*
+--- Responsive Design ---
+*/
+
+/* For tablets and smaller desktops */
+@media (max-width: 992px) {
+    .services-grid {
+        gap: 30px;
+    }
+
+    .service-intro .section-title {
+        font-size: 2rem;
+    }
+
+    .service-item .service-title {
+        font-size: 1.25rem;
+    }
+}
+
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    .services-grid {
+        /* Stack the columns on top of each other */
+        grid-template-columns: 1fr;
+    }
+
+    .service-list {
+        padding-top: 0; /* Remove top padding on mobile */
+    }
+
+    .service-intro .section-title {
+        text-align: center;
+    }
+
+    .service-intro .section-description {
+        text-align: center;
+    }
+}
+
+
+
+/* --- Container for consistent centering and padding --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Products Section Styling --- */
+.products-section {
+    padding: 60px 0; /* Vertical padding */
+    text-align: center;
+}
+
+/* --- Section Header (Title and Subtitle) --- */
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #4b5563;
+}
+
+/* --- Product Cards Layout --- */
+.product-cards-container {
+    display: grid;
+    /* Create 3 columns on desktop, 2 on tablet, and 1 on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Space between cards */
+}
+
+/* --- Individual Product Card Styling --- */
+.product-card {
+    position: relative; /* Needed for absolute positioning of children */
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden; /* Hides parts of the image that go beyond the border radius */
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Using flexbox to align content */
+    flex-direction: column;
+    justify-content: flex-end; /* Pushes content to the bottom */
+    text-align: left;
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Lifts the card on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Card Background Image --- */
+.card-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the card without distortion */
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .card-background-image {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* --- Gradient Overlay for Text Readability --- */
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+    z-index: 2;
+}
+
+/* --- Card Content (Text) --- */
+.card-content {
+    position: relative;
+    z-index: 3;
+    padding: 25px;
+    border-radius: 12px; /* Rounded corners for the glass effect */
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #fff; /* Ensure text is white for contrast */
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+}
+
+/* --- Special Styling for the CRM Card Icon --- */
+.crm-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 15px;
+}
+
+.crm-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .products-section {
+        padding: 40px 0;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+
+
+/* Testimonials Section Styles */
+
+.testimonials-container {
+    text-align: center;
+    margin: 3rem;
+}
+
+/* Section Header Styles */
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    font-size: 1.125rem;
+    color: #555;
+    margin-bottom: 3rem;
+}
+
+/* Testimonials Grid Layout */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Individual Testimonial Card Styles */
+.testimonial-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.testimonial-card blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.testimonial-card blockquote p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Allows quote to take up available space */
+}
+
+/* Star Rating Styles */
+.rating {
+    color: #ffc107;
+    margin-bottom: 1.5rem;
+}
+
+.rating span {
+    font-size: 1.25rem;
+}
+
+/* Author Information Styles */
+.author-info .author-name {
+    font-weight: 700;
+    margin: 0;
+}
+
+.author-info .author-title {
+    color: #777;
+    margin: 0.25rem 0;
+}
+
+.author-info .author-company {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
