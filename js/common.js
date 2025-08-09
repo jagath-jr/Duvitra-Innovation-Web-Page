@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const siteFooter = document.querySelector('.site-footer');
-
+  const backgroundText = document.querySelector('.footer-background-text');
   const footerColumns = gsap.utils.toArray('.footer-column');
   const footerLogo = document.querySelector('.footer-logo');
   const socialIcons = document.querySelectorAll('.social-icons a');
