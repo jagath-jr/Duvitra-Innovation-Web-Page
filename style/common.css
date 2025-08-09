@@ -19,7 +19,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: ;
+  /* background: white; */
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
 }
@@ -46,9 +46,9 @@ body {
 .navbar a {
   text-decoration: none;
   color: #222;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  padding: 8px 20px;
+  padding: 0.1rem 0.625rem;
   border-radius: 24px;
   transition: background 0.2s, color 0.2s;
 }
@@ -150,24 +150,24 @@ body {
             top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: clamp(100px, 25vw, 400px);
+            font-size: clamp(6.2rem, 25vw, 25rem);
             font-weight: 800;
-            color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.07);
             z-index: 1;
         }
 
         /* Content Container */
         .site-footer .container {
-            max-width: 1200px;
+            max-width: 75rem;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.2rem;
             position: relative;
             z-index: 2;
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
+             display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.75rem, 1fr));
             gap: 40px;
             flex-wrap: wrap;
         }

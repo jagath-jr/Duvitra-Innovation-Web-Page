@@ -133,12 +133,15 @@
             font-size: 1.125rem; /* e.g., 18px */
             font-weight: 600;
             margin-bottom: 0.75rem;
+            text-align: justify;
         }
+        
 
         .stats-item p {
             font-size: 1rem; /* e.g., 16px */
             color: #555;
             line-height: 1.6;
+            text-align: justify;
         }
 
         /* --- Responsive Adjustments --- */
@@ -282,7 +285,7 @@
     justify-content: center;
     align-items: center;
     padding: 4rem 1.5rem; /* Vertical and horizontal padding */
-    min-height: 80vh; /* Ensure it takes up a good portion of the screen */
+    min-height: 50vh; /* Ensure it takes up a good portion of the screen */
 }
 
 .offerings-section_what-we-offer-a1 {
@@ -318,7 +321,7 @@
 }
 
 .section-title_what-we-offer-a1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -675,7 +678,7 @@ section:not(.services-section) {
 .product-cards-container {
     display: grid;
     /* Create 3 columns on desktop, 2 on tablet, and 1 on mobile */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
     gap: 30px; /* Space between cards */
 }
 
@@ -814,7 +817,7 @@ section:not(.services-section) {
 /* Testimonials Grid Layout */
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12.75rem, 1fr));
     gap: 2rem;
 }
 

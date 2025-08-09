@@ -1,0 +1,96 @@
+/* Hero Section */
+#webdev-hero {
+    background: url('../img/services/services bg.png') center/cover no-repeat;
+    padding: 100px 20px; /* Adjust vertical space inside hero */
+    text-align: center;
+    color: white;
+    position: relative;
+    margin-top: -8rem; /* Pull hero up behind header */
+    z-index: -1;
+}
+#webdev-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#webdev-hero p {
+    font-size: 1.2rem;
+}
+
+/* Intro Section */
+#webdev-intro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 20px;
+}
+
+.intro-text {
+    flex: 1 1 50%;
+}
+
+.intro-image {
+    flex: 1 1 40%;
+}
+
+.intro-image img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Expertise Section */
+#webdev-expertise {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.expertise-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.expertise-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1 1 calc(26.333% - 20px); /* 3 per row */
+    max-width: 320px;
+}
+.expertise-card img {
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #webdev-hero h1 {
+        font-size: 2rem;
+    }
+}
+/* Make it responsive */
+@media (max-width: 900px) {
+    .expertise-card {
+        flex: 1 1 calc(50% - 20px); /* 2 per row */
+    }
+}
+
+@media (max-width: 600px) {
+    .expertise-card {
+        flex: 1 1 100%; /* 1 per row */
+    }
+}

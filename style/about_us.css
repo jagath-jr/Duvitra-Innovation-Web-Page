@@ -10,6 +10,7 @@ body {
 .about-us {
     padding: 6.563rem 1.25rem;
     background-color: #fff;
+    text-align: justify;
 }
 
 .about-us-container {

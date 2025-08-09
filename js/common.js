@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const siteFooter = document.querySelector('.site-footer');
-  const backgroundText = document.querySelector('.footer-background-text');
+
   const footerColumns = gsap.utils.toArray('.footer-column');
   const footerLogo = document.querySelector('.footer-logo');
   const socialIcons = document.querySelectorAll('.social-icons a');
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       opacity: 0.2,
       y: 0,
-      duration: 1,
+      duration: 2,
       ease: "power2.out",
       scrollTrigger: {
         trigger: siteFooter,
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         scale: 1,
         opacity: 1,
-        duration: 0.6,
+        duration: 1.6,
         ease: "elastic.out(1, 0.75)",
         scrollTrigger: {
           trigger: footerLogo,
@@ -141,11 +141,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- 4. Staggered Fade In for Social Icons ---
   gsap.fromTo(socialIcons,
-    { opacity: 0, y: 20 },
+    { opacity: 0, y: 40 },
     {
       opacity: 1,
       y: 0,
-      duration: 0.5,
+      duration: 2,
       stagger: 0.15,
       ease: "power3.out",
       scrollTrigger: {
