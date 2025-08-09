@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     scrollTrigger: {
                         trigger: item,
                         start: "top 80%",
-                        end: "bottom 20%",
+                        end: "bottom 10%",
                         toggleActions: "play reverse play reverse",
                     }
                 });
