@@ -67,7 +67,8 @@ body {
 }
 
 .navbar a:not(.contact):hover {
-  background: #f2f2f2;
+  background: linear-gradient(to bottom, #10e0a4, #00b4d8);
+  
 }
 
 /* Hide toggle button on desktop */
