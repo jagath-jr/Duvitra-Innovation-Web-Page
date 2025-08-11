@@ -26,7 +26,7 @@
     flex-grow: 1; /* Each line takes up equal space */
     height: 100%;
     /* ✨ THIS IS THE NEW LINE TO MAKE THE LINES VISIBLE ✨ */
-    border-right: 1px solid rgba(255, 255, 255, 0.25); /* Adds a subtle separator */
+    border-right: 1px solid rgba(146, 146, 146, 0.25); /* Adds a subtle separator */
     
     /* The gradient is much taller than the container to allow for vertical movement. */
     background: linear-gradient(
