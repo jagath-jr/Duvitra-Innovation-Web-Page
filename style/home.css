@@ -22,28 +22,100 @@
 }
 
 /* Style for each individual vertical line */
+/* Base Line Styles */
 .line {
-    flex-grow: 1; /* Each line takes up equal space */
+    flex-grow: 1;
     height: 100%;
-    /* ✨ THIS IS THE NEW LINE TO MAKE THE LINES VISIBLE ✨ */
-    border-right: 1px solid rgba(146, 146, 146, 0.25); /* Adds a subtle separator */
+    position: relative;
+    overflow: hidden;
     
-    /* The gradient is much taller than the container to allow for vertical movement. */
+    /* Original Gradient Background */
     background: linear-gradient(
         to bottom,
         #ffffff,
-        #64dfdf,
-        #48bfe3,
-        #5390d9,
-        #1b85ff,
-        #5390d9,
-        #48bfe3,
-        #64dfdf,
+        #008be5,
+        #00C6A1,
+        #008be5,
+        #00C6A1,
         #ffffff
     );
-    background-size: 100% 300%; /* Make the background gradient very tall */
+    background-size: 100% 400%;
 }
 
+/* Permanent Visible Line */
+.line::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        rgba(160, 153, 153, 0.5),
+        rgba(160, 153, 153, 0.1)
+    );
+    z-index: 1;
+}
+
+/* Slow-Motion Raindrop */
+.line::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2px;
+    height: var(--drop-height, 80px);
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, var(--opacity-peak, 0.8)),
+        transparent
+    );
+    opacity: 0;
+    z-index: 2;
+    animation: slow-drop var(--drop-duration, 8s) infinite ease-in;
+    animation-delay: calc(var(--line-index) * 1.2s);
+    border-radius: 2px;
+    filter: blur(0.4px);
+}
+
+/* Keyframes for Ultra-Smooth Drop */
+@keyframes slow-drop {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    15% {
+        opacity: var(--opacity-peak, 0.8);
+    }
+    85% {
+        opacity: var(--opacity-peak, 0.8);
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Individual Line Variations */
+.line:nth-child(4n+1) {
+    --drop-duration: 9s;
+    --drop-height: 70px;
+}
+.line:nth-child(4n+2) {
+    --drop-duration: 7.5s;
+    --drop-height: 90px;
+}
+.line:nth-child(4n+3) {
+    --drop-duration: 8.5s;
+    --drop-height: 60px;
+}
+.line:nth-child(4n+4) {
+    --drop-duration: 7s;
+    --drop-height: 100px;
+}
 /* Hero content container, positioned on top of the background */
 .hero-content {
     max-width: 800px;

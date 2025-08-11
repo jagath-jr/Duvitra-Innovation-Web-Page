@@ -406,31 +406,46 @@
 <script>// Wait for the DOM to be fully loaded before running the script
 document.addEventListener('DOMContentLoaded', () => {
     const linesContainer = document.querySelector('.lines-container');
-    // Define the number of vertical lines to create
-    const numberOfLines = 20;
+    const numberOfLines = 18;
+    const baseDuration = 8000; // 8 seconds base duration
 
-    // Dynamically create the vertical lines
+    // Create lines with randomized properties
     for (let i = 0; i < numberOfLines; i++) {
         const line = document.createElement('div');
         line.classList.add('line');
+        
+        // Set custom properties for each line
+        line.style.setProperty('--line-index', i);
+        line.style.setProperty('--opacity-peak', `${0.7 + Math.random() * 0.3}`);
+        line.style.setProperty('--drop-height', `${60 + Math.random() * 60}px`);
+        line.style.setProperty('--drop-duration', `${baseDuration + (Math.random() * 2000 - 1000)}ms`);
+        
         linesContainer.appendChild(line);
     }
 
-    // Use GSAP to animate the lines
+    // Original GSAP Wave Animation
     gsap.to(".line", {
-        // Animate the vertical background position to create the moving color effect
         backgroundPosition: "0% 100%",
-        duration: 10,       // Duration for one full animation cycle
-        repeat: -1,         // Repeat indefinitely
-        yoyo: true,         // Animate back and forth
-        ease: "sine.inOut", // Smooth easing for a gentle motion
-        // The stagger property is key to creating the wave effect
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
         stagger: {
-            each: 0.1,         // Time delay between the start of each line's animation
-            from: "center",    // Start the stagger from the center outwards
+            each: 0.1,
+            from: "center",
             ease: "power2.inOut"
         }
     });
-});</script>
+
+    // Reset animations periodically to prevent memory buildup
+    setInterval(() => {
+        document.querySelectorAll('.line::before').forEach(drop => {
+            drop.style.animation = 'none';
+            void drop.offsetWidth; // Trigger reflow
+            drop.style.animation = '';
+        });
+    }, 30000); // Every 30 seconds
+});
+</script>
     </body>
 </html>
