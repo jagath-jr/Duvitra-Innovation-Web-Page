@@ -437,14 +437,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Reset animations periodically to prevent memory buildup
-    setInterval(() => {
-        document.querySelectorAll('.line::before').forEach(drop => {
-            drop.style.animation = 'none';
-            void drop.offsetWidth; // Trigger reflow
-            drop.style.animation = '';
-        });
-    }, 30000); // Every 30 seconds
+    // Reset animations on .line elements (not pseudo-elements)
+setInterval(() => {
+    document.querySelectorAll('.line').forEach(line => {
+        line.style.animation = 'none';
+        void line.offsetWidth; // Optional reflow trigger (may not be needed)
+        line.style.animation = '';
+    });
+}, 30000); // Reset every 30 secondss
 });
 </script>
     </body>
