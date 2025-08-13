@@ -19,7 +19,7 @@ const servicesData = {
     title: "UI/UX & Marketing Materials Design",
     tagline: "Designs that captivate and communicate",
     description: "Our design team creates visually stunning and highly functional user interfaces that enhance user engagement and satisfaction. We also develop compelling marketing materials that effectively communicate your brand message and value proposition.",
-    image: "../img/services/uiux.jpg",
+    image: "../img/about_us/Tech Life Remote Life.png",
     features: [
       "User research & persona development",
       "Wireframing & prototyping",
@@ -34,7 +34,7 @@ const servicesData = {
     title: "Digital Marketing",
     tagline: "Grow your online presence and reach",
     description: "Our comprehensive digital marketing services help you establish a strong online presence, reach your target audience, and convert visitors into customers. We leverage data-driven strategies to maximize your ROI.",
-    image: "../img/services/marketing.jpg",
+    image: "../img/about_us/Tech Life Remote Life.png",
     features: [
       "SEO optimization",
       "Social media marketing",
@@ -49,7 +49,7 @@ const servicesData = {
     title: "Custom Software Solutions",
     tagline: "Tailored technology for your unique needs",
     description: "We develop bespoke software solutions designed specifically for your business requirements. Our custom software helps streamline operations, improve efficiency, and provide competitive advantages.",
-    image: "../img/services/software.jpg",
+    image: "../img/about_us/Tech Life Remote Life.png",
     features: [
       "Enterprise software development",
       "Workflow automation",
@@ -64,7 +64,7 @@ const servicesData = {
     title: "AI Chatbot Development",
     tagline: "Intelligent automation for better customer engagement",
     description: "We build advanced AI-powered chatbots that enhance customer service, automate responses, and provide 24/7 support. Our chatbots integrate seamlessly with your existing systems.",
-    image: "../img/services/chatbot.jpg",
+    image: "../img/about_us/Tech Life Remote Life.png",
     features: [
       "Natural Language Processing (NLP)",
       "Multi-platform integration",
@@ -79,7 +79,7 @@ const servicesData = {
     title: "IT Consultancy & Outsourcing",
     tagline: "Expert guidance for your technology needs",
     description: "Our IT consulting services help you make informed technology decisions, while our outsourcing solutions provide access to top-tier talent without the overhead of in-house teams.",
-    image: "../img/services/itconsulting.jpg",
+    image: "../img/about_us/Tech Life Remote Life.png",
     features: [
       "Technology strategy development",
       "Infrastructure planning",
