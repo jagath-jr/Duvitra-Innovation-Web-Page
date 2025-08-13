@@ -4,7 +4,7 @@ const servicesData = {
     title: "Website & Mobile App Development",
     tagline: "Build digital experiences that engage and convert",
     description: "We specialize in creating responsive websites and high-performance mobile applications that deliver exceptional user experiences. Our development process combines cutting-edge technologies with industry best practices to ensure your digital product stands out in today's competitive market.",
-    image: "../img/services/webdev.jpg",
+    image: "../img/about_us/Tech Life Remote Life.png",
     features: [
       "Custom website development",
       "iOS and Android app development",

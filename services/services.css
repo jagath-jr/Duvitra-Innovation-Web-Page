@@ -71,6 +71,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     flex: 1 1 calc(26.333% - 20px); /* 3 per row */
     max-width: 320px;
+   
 }
 .expertise-card img {
     margin-bottom: 15px;
@@ -93,4 +94,78 @@
     .expertise-card {
         flex: 1 1 100%; /* 1 per row */
     }
+}
+
+
+
+/* Homepage Service Cards with Clickable Areas */
+.expertise-card a {
+    display: block;
+    height: 100%;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit; /* Inherit text color from parent */
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Maintain existing card styling while making links clickable */
+.expertise-card img, 
+.expertise-card h3, 
+.expertise-card p {
+    pointer-events: none; /* Allows click to pass through to the <a> tag */
+    position: relative; /* Maintains stacking context */
+    z-index: 1; /* Ensures content stays above the pseudo-element */
+}
+
+/* Optional: Add a subtle overlay on hover */
+.expertise-card a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(59, 130, 246, 0.05);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
+
+.expertise-card:hover a::after {
+    opacity: 1;
+}
+
+/* Focus styles for accessibility */
+.expertise-card a:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Maintain existing card layout */
+.expertise-card {
+    background-color: #f9f9f9;
+    border-radius: 1rem;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Keeps child elements within border radius */
+}
+
+.expertise-card img {
+    margin-bottom: 1.5rem;
+}
+
+.expertise-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1e3a8a; /* Your blue color from services page */
+}
+
+.expertise-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
 }

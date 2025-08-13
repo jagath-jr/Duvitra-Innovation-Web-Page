@@ -1,9 +1,12 @@
 /* Service Hero Section */
 #service-hero {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white;
+  background: var(--nnn, linear-gradient(180deg, rgba(0, 134, 233, 0.24) 0%, rgba(0, 236, 118, 0.18) 100%));
+  color: rgb(48, 9, 218);
   padding: 6rem 2rem;
   text-align: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 #service-hero h1 {
@@ -19,7 +22,7 @@
 /* Service Content Section */
 #service-content {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 12rem 0 auto;
   padding: 4rem 2rem;
 }
 
@@ -194,8 +197,8 @@
 #service-cta {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white;
+  background: var(--nnn, linear-gradient(180deg, rgba(0, 134, 233, 0.24) 0%, rgba(0, 236, 118, 0.18) 100%));
+  color: rgb(156, 153, 153);
 }
 
 #service-cta h2 {
