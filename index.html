@@ -28,38 +28,39 @@
   </button>
 </header>
 <!--=====hero section=====-->
- <section class="hero">
-        <div class="lines-container"></div>
+<section class="hero">
+    <div class="lines-container"></div>
+    
+    <div class="hero-content">
+        <h1 class="hero-title">Innovating Digital Innovations and Future</h1>
+        <p class="hero-subtitle">Driving transformation with future-ready digital innovations.</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary">Get Started</button>
+            <button class="btn btn-secondary">Learn More</button>
+        </div>
         
-        <div class="hero-content">
-            <h1 class="hero-title">Innovating Digital Innovations and Future</h1>
-            <p class="hero-subtitle">Driving transformation with future-ready digital innovations.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Get Started</button>
-                <button class="btn btn-secondary">Learn More</button>
+        <!-- Stats section inside hero -->
+        <div class="stats-section" id="statsSection">
+            <div class="stats-item">
+                <div class="stat-number" data-end="50" data-duration="1000">0+</div>
+                <div class="stat-title">Tech Experts</div>
+                <p>A dedicated team crafting tailored digital solutions.</p>
+            </div>
+
+            <div class="stats-item">
+                <div class="stat-number" data-end="120" data-duration="1000">0+</div>
+                <div class="stat-title">Happy Clients</div>
+                <p>From design to delivery, we provide end-to-end services.</p>
+            </div>
+
+            <div class="stats-item">
+                <div class="stat-number" data-end="10" data-duration="1000">0+</div>
+                <div class="stat-title">Custom Projects</div>
+                <p>We build seamless, user-first digital experiences.</p>
             </div>
         </div>
-    </section>
-     <section class="stats-section" id="statsSection">
-        <div class="stats-item">
-            <div class="stat-number" data-end="50" data-duration="1000">0+</div>
-            <div class="stat-title">Tech Experts</div>
-            <p>A dedicated team crafting tailored digital solutions that turn ideas into real business impact.</p>
-        </div>
-
-        <div class="stats-item">
-            <div class="stat-number" data-end="120" data-duration="1000">0+</div>
-            <div class="stat-title">Happy Clients</div>
-            <p>From design to delivery, we provide end-to-end digital services with a focus on measurable growth.</p>
-        </div>
-
-        <div class="stats-item">
-            <div class="stat-number" data-end="10" data-duration="1000">0+</div>
-            <div class="stat-title">Custom Projects</div>
-            <p>We bring together expertise and creativity to build seamless, user-first digital experiences.</p>
-        </div>
-    </section>
-
+    </div>
+</section>
 <section class="about-section">
         <div class="about-image-container">
             <img
@@ -193,16 +194,16 @@
                     <article class="service-item">
                         <div class="service-card-inner">
                             <div class="service-card-front">
-                                <h3 class="service-title">App Development</h3>
+                                <h3 class="service-title">Digital Marketing</h3>
                                 <p class="service-description">
-                                    Fast, secure mobile apps for Android and iOS, built for smooth performance
-                                    and user engagement.
+
+                                    Digital marketing strategies to boost your brand visibility, drive targeted traffic, and increase conversions.
                                 </p>
                             </div>
                             <div class="service-card-back">
-                                <h3 class="service-title">Digital Marketing</h3>
+                                <h3 class="service-title">Software Development</h3>
                                 <p class="service-description">
-                                    Data-driven strategies including SEO, SEM, and social media to expand your reach and grow your audience.
+                                    Custom software solutions tailored to your business needs, ensuring efficiency and scalability.
                                 </p>
                             </div>
                         </div>
@@ -211,16 +212,15 @@
                     <article class="service-item">
                         <div class="service-card-inner">
                             <div class="service-card-front">
-                                <h3 class="service-title">CRM & ERP Solutions</h3>
+                                <h3 class="service-title">Chatbot Development</h3>
                                 <p class="service-description">
-                                    Optimize your business processes with scalable and integrated management
-                                    systems.
+                                    Enhance customer engagement and streamline support with AI-driven chatbots.
                                 </p>
                             </div>
                             <div class="service-card-back">
-                                <h3 class="service-title">Cloud Solutions</h3>
+                                <h3 class="service-title">IT Consulting</h3>
                                 <p class="service-description">
-                                    Leverage scalable and secure cloud infrastructure to enhance performance and reduce operational costs.
+                                    Leverage industry expertise to optimize your IT strategy and drive digital transformation.
                                 </p>
                             </div>
                         </div>
@@ -231,17 +231,17 @@
         </div>
     </section>
 
-<section id="products" class="products-section">
+<!-- <section id="products" class="products-section">
             <div class="container">
-                <!-- Section Header -->
+               
                 <div class="section-header">
                     <h2>Products</h2>
                     <p>Smart solutions built to solve real business challenges — secure, scalable, and user-focused.</p>
                 </div>
 
-                <!-- Product Cards Container -->
+                
                 <div class="product-cards-container">
-                    <!-- Card 1: Warehouse Manager -->
+                   
                     <article class="product-card">
                         <img src="img\home\product warehouse manager.png" 
                              alt="A worker in a large, modern warehouse." 
@@ -253,7 +253,7 @@
                         </div>
                     </article>
 
-                    <!-- Card 2: CRM Platform -->
+                   
                     <article class="product-card">
                          <img src="img\home\product CRM Platform.png" 
                              alt="A person using a CRM on a computer." 
@@ -266,7 +266,7 @@
                         </div>
                     </article>
 
-                    <!-- Card 3: Analytics Dashboard -->
+                    
                     <article class="product-card">
                          <img src="img\home\product Analytics Dashboord.png" 
                              alt="A complex analytics dashboard on a screen." 
@@ -279,7 +279,7 @@
                     </article>
                 </div>
             </div>
-        </section>
+        </section> -->
 
  <section id="testimonials">
             <div class="testimonials-container">
@@ -407,23 +407,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     const linesContainer = document.querySelector('.lines-container');
     const numberOfLines = 18;
-    const baseDuration = 8000; // 8 seconds base duration
+    const baseDuration = 8000;
 
     // Create lines with randomized properties
     for (let i = 0; i < numberOfLines; i++) {
         const line = document.createElement('div');
         line.classList.add('line');
         
-        // Set custom properties for each line
-        line.style.setProperty('--line-index', i);
         line.style.setProperty('--opacity-peak', `${0.7 + Math.random() * 0.3}`);
         line.style.setProperty('--drop-height', `${60 + Math.random() * 60}px`);
-        line.style.setProperty('--drop-duration', `${baseDuration + (Math.random() * 2000 - 1000)}ms`);
+        line.style.setProperty('--drop-duration', `${4000 + Math.random() * 2000}ms`);
+        line.style.setProperty('--animation-delay', `${Math.random() * 300}ms`);
         
         linesContainer.appendChild(line);
     }
 
-    // Original GSAP Wave Animation
+    // GSAP Wave Animation
     gsap.to(".line", {
         backgroundPosition: "0% 100%",
         duration: 8,
@@ -437,14 +436,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Reset animations on .line elements (not pseudo-elements)
-setInterval(() => {
-    document.querySelectorAll('.line').forEach(line => {
-        line.style.animation = 'none';
-        void line.offsetWidth; // Optional reflow trigger (may not be needed)
-        line.style.animation = '';
-    });
-}, 30000); // Reset every 30 secondss
+    // Reset animations periodically
+    setInterval(() => {
+        document.querySelectorAll('.line').forEach(line => {
+            line.style.animation = 'none';
+            void line.offsetWidth;
+            line.style.animation = '';
+        });
+    }, 30000);
 });
 </script>
     </body>

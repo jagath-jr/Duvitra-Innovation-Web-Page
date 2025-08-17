@@ -1,4 +1,3 @@
-      /* Hero Section Styles */
 .hero {
     height: 110vh;
     display: flex;
@@ -6,11 +5,11 @@
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    position: relative; 
-    overflow: hidden; /* Important: keeps lines contained */
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
-/* Container for all the animated vertical lines */
 .lines-container {
     position: absolute;
     top: 0;
@@ -18,31 +17,18 @@
     width: 100%;
     height: 100%;
     display: flex;
-    z-index: 1; /* Behind the content */
+    z-index: 1;
 }
 
-/* Style for each individual vertical line */
-/* Base Line Styles */
 .line {
     flex-grow: 1;
     height: 100%;
     position: relative;
     overflow: hidden;
-    
-    /* Original Gradient Background */
-    background: linear-gradient(
-        to bottom,
-        #ffffff,
-        #008be5,
-        #00C6A1,
-        #008be5,
-        #00C6A1,
-        #ffffff
-    );
+    background: linear-gradient(to bottom, #ffffff, #008be5, #00C6A1, #008be5, #00C6A1, #ffffff);
     background-size: 100% 400%;
 }
 
-/* Permanent Visible Line */
 .line::after {
     content: '';
     position: absolute;
@@ -50,103 +36,115 @@
     top: 0;
     bottom: 0;
     width: 1px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.1),
-        rgba(160, 153, 153, 0.5),
-        rgba(160, 153, 153, 0.1)
-    );
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(160, 153, 153, 0.5), rgba(160, 153, 153, 0.1));
     z-index: 1;
 }
 
-/* Slow-Motion Raindrop */
 .line::before {
     content: '';
     position: absolute;
     right: 0;
     top: 0;
     width: 2px;
-    height: var(--drop-height, 80px);
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(255, 255, 255, var(--opacity-peak, 0.8)),
-        transparent
-    );
+    height: var(--drop-height);
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, var(--opacity-peak)), transparent);
     opacity: 0;
-    z-index: 2;
-    animation: slow-drop var(--drop-duration, 8s) infinite ease-in;
-    animation-delay: calc(var(--line-index) * 1.2s);
-    border-radius: 2px;
+    animation: slow-drop var(--drop-duration) infinite ease-in;
+    animation-delay: var(--animation-delay, 0ms);
     filter: blur(0.4px);
 }
 
-/* Keyframes for Ultra-Smooth Drop */
 @keyframes slow-drop {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    15% {
-        opacity: var(--opacity-peak, 0.8);
-    }
-    85% {
-        opacity: var(--opacity-peak, 0.8);
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0;
-    }
+    0% { opacity: 0.2; transform: translateY(-100%); }
+    20% { opacity: var(--opacity-peak); }
+    100% { transform: translateY(100vh); opacity: var(--opacity-peak); }
 }
 
-/* Individual Line Variations */
-.line:nth-child(4n+1) {
-    --drop-duration: 9s;
-    --drop-height: 70px;
-}
-.line:nth-child(4n+2) {
-    --drop-duration: 7.5s;
-    --drop-height: 90px;
-}
-.line:nth-child(4n+3) {
-    --drop-duration: 8.5s;
-    --drop-height: 60px;
-}
-.line:nth-child(4n+4) {
-    --drop-duration: 7s;
-    --drop-height: 100px;
-}
-/* Hero content container, positioned on top of the background */
 .hero-content {
     max-width: 800px;
-    position: relative; 
-    z-index: 2; /* On top of the lines */
+    position: relative;
+    z-index: 2;
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: 150px;
 }
 
-/* Main headline style */
 .hero-title {
     font-size: 3.5rem;
     font-weight: 900;
     margin-bottom: 1rem;
+    margin-top:-1rem;
 }
 
-/* Subtitle style */
 .hero-subtitle {
     font-size: 1.25rem;
     margin-bottom: 2rem;
     opacity: 0.9;
 }
 
-/* Flex container for buttons */
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    /* margin-bottom: 80px; */
 }
 
-/* General Button Styles */
+.stats-section {
+    position: absolute;
+    top: 61%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4rem;
+    padding: 0 20px;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.stats-item {
+    position: relative;
+    padding-left: 20px;
+    max-width: 300px;
+}
+
+.stats-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 4px;
+    height: 90%;
+    background: linear-gradient(to bottom, #10e0a4, #00b4d8);
+    border-radius: 2px;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #fff;
+}
+
+.stat-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.stats-item p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
 .btn {
     padding: 0.8rem 1.8rem;
     border-radius: 8px;
@@ -157,7 +155,6 @@
     transition: all 0.3s ease;
 }
 
-/* Primary Button (dark) */
 .btn-primary {
     background-color: #000;
     color: #fff;
@@ -169,7 +166,6 @@
     transform: translateY(-2px);
 }
 
-/* Secondary Button (glassmorphism style) */
 .btn-secondary {
     background-color: rgba(255, 255, 255, 0.15);
     color: #fff;
@@ -182,132 +178,74 @@
     transform: translateY(-2px);
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
+        margin-top:-18rem;
     }
+    
     .hero-subtitle {
         font-size: 1rem;
     }
+    
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        margin-bottom: 60px;
     }
-    .btn {
-        width: 100%;
-        max-width: 12.5rem;
+    
+    .stats-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        bottom: 20px;
     }
-}        
-        /*========Stats Section Styling ==========*/
-        .stats-section {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 4rem; /* Space between the items */
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto; /* Center the section */
-            color: #000;
-            text-align: left;
-        }
 
-        .stats-item {
-            position: relative; /* Needed for the pseudo-element line */
-            padding-left: 20px; /* Space for the decorative line */
-            max-width: 300px; /* Max width for each item */
-        }
+    .stats-item {
+        max-width: 150px;
+        padding-left: 15px;
+    }
 
-        /* The decorative vertical line with a gradient */
-        .stats-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 4px;
-            height: 90%; /* Adjust height as needed */
-            background: linear-gradient(to bottom, #10e0a4, #00b4d8);
-            border-radius: 2px;
-        }
+    .stat-number {
+        font-size: 2rem;
+    }
 
-        .stat-number {
-            font-size: 3.5rem; /* e.g., 56px */
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
+    .stat-title {
+        font-size: 1rem;
+    }
 
-        .stat-title {
-            font-size: 1.125rem; /* e.g., 18px */
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            text-align: justify;
-        }
-        
+    .stats-item p {
+        font-size: 0.875rem;
+    }
+}
 
-        .stats-item p {
-            font-size: 1rem; /* e.g., 16px */
-            color: #555;
-            line-height: 1.6;
-            text-align: justify;
-        }
+@media (max-width: 480px) {
+    .hero-content {
+        padding-bottom: 1rem;
+    }
+    
+    .stats-section {
+        gap: 1rem;
+        bottom: 9rem;
+    }
 
-        /* --- Responsive Adjustments --- */
-        @media (max-width: 768px) {
-            .stats-section {
-                flex-direction: row; /* Keep horizontal layout */
-                flex-wrap: wrap; /* Allow items to wrap if needed */
-                gap: 1.5rem; /* Reduce gap between items */
-                padding: 40px 20px; /* Reduce padding */
-                justify-content: space-around; /* Better spacing for mobile */
-            }
+    .stats-item {
+        max-width: 120px;
+        padding-left: 12px;
+    }
 
-            .stats-item {
-                max-width: 150px; /* Reduce max width */
-                padding-left: 15px; /* Adjust padding */
-            }
+    .stat-number {
+        font-size: 1.75rem;
+    }
 
-            .stats-item::before {
-                height: 85%; /* Adjust line height */
-            }
+    .stat-title {
+        font-size: 0.875rem;
+    }
 
-            .stat-number {
-                font-size: 2rem; /* Reduce number size */
-            }
-
-            .stat-title {
-                font-size: 1rem; /* Reduce title size */
-                margin-bottom: 0.5rem;
-            }
-
-            .stats-item p {
-                font-size: 0.875rem; /* Reduce paragraph text size */
-                line-height: 1.5;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-section {
-                gap: 1rem; /* Further reduce gap */
-                padding: 30px 15px;
-            }
-
-            .stats-item {
-                max-width: 120px; /* More compact */
-                padding-left: 12px;
-            }
-
-            .stat-number {
-                font-size: 1.75rem;
-            }
-
-            .stat-title {
-                font-size: 0.875rem;
-            }
-
-            .stats-item p {
-                font-size: 0.75rem;
-            }
-        }
+    .stats-item p {
+        font-size: 0.75rem;
+    }
+}
 
 /*========About Us Section========*/
         .about-section {
@@ -914,6 +852,7 @@ section:not(.services-section) {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+    margin-top: 5rem;
 }
 
 .section-header p {

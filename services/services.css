@@ -140,10 +140,10 @@
 }
 
 /* Focus styles for accessibility */
-.expertise-card a:focus {
+/* .expertise-card a:focus {
     outline: 2px solid #3b82f6;
     outline-offset: 2px;
-}
+} */
 
 /* Maintain existing card layout */
 .expertise-card {
