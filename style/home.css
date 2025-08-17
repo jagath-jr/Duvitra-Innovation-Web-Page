@@ -563,7 +563,7 @@
 section:not(.services-section) {
     position: relative;
     z-index: 1;
-    top: -8rem;
+    top: -1rem;
 }
 .service-card-inner {
     cursor: pointer; /* Shows it's clickable */
@@ -853,7 +853,7 @@ section:not(.services-section) {
 
 .testimonials-container {
     text-align: center;
-    margin: 8rem 3rem;
+    margin: 3rem;
 }
 
 /* Section Header Styles */
