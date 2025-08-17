@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // ========== Services Section Flip Cards (Scroll + Click/Touch) ==========
     gsap.registerPlugin(ScrollTrigger);
 
-    // Function to flip a card
+    // ========== Services Section Flip Cards (Scroll + Click/Touch) ==========
     function flipCard(cardInner) {
         const currentRotation = gsap.getProperty(cardInner, "rotationX");
         gsap.to(cardInner, {
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Add click/touch event listeners to all cards
     function setupCardInteractions() {
         const serviceCards = gsap.utils.toArray(".service-item .service-card-inner");
         
@@ -60,11 +58,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         },
-
+        
         // --- Mobile Animation ---
         "(max-width: 768px)": function() {
             setupCardInteractions();
             
+            // Choose one approach for mobile - either scroll-triggered or click-only
+            // Option 1: Scroll-triggered animation
             gsap.utils.toArray(".service-item").forEach(item => {
                 const cardInner = item.querySelector('.service-card-inner');
                 
@@ -80,6 +80,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
             });
+            
+            // OR Option 2: Click-only interaction (remove the above if using this)
+            // Just call setupCardInteractions() and nothing else
         }
     });
 
@@ -158,4 +161,94 @@ document.addEventListener("DOMContentLoaded", function() {
             if (title) console.log(`Clicked on ${title} card`);
         });
     });
+
+    // ========== Lines Animation ==========
+    const linesContainer = document.querySelector('.lines-container');
+    if (linesContainer) {
+        const numberOfLines = 18;
+        const baseDuration = 8000;
+
+        for (let i = 0; i < numberOfLines; i++) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            
+            line.style.setProperty('--opacity-peak', `${0.7 + Math.random() * 0.3}`);
+            line.style.setProperty('--drop-height', `${60 + Math.random() * 60}px`);
+            line.style.setProperty('--drop-duration', `${4000 + Math.random() * 2000}ms`);
+            line.style.setProperty('--animation-delay', `${Math.random() * 300}ms`);
+            
+            linesContainer.appendChild(line);
+        }
+
+        gsap.to(".line", {
+            backgroundPosition: "0% 100%",
+            duration: 8,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            stagger: {
+                each: 0.1,
+                from: "center",
+                ease: "power2.inOut"
+            }
+        });
+
+        setInterval(() => {
+            document.querySelectorAll('.line').forEach(line => {
+                line.style.animation = 'none';
+                void line.offsetWidth;
+                line.style.animation = '';
+            });
+        }, 30000);
+    }
+
+    // ========== Lottie Animation ==========
+    const lottieContainer = document.getElementById('lottie-animation-container');
+    if (lottieContainer && typeof lottie !== 'undefined') {
+        lottie.loadAnimation({
+            container: lottieContainer,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'SVG/Connect with us.json'
+        });
+    }
+
+    // ========== Text Animations ==========
+    const elementsToAnimate = gsap.utils.toArray('.animate-text');
+    if (elementsToAnimate.length && typeof SplitType !== 'undefined') {
+        elementsToAnimate.forEach((element, index) => {
+            const split = new SplitType(element, { types: 'words' });
+            gsap.set(element, { opacity: 1 });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+
+            tl.from(split.words, {
+                y: '100%',
+                opacity: 0,
+                stagger: 0.05,
+                duration: 0.5,
+                ease: 'power2.out',
+                delay: index * 0.2
+            });
+        });
+    }
+
+    // ========== Button Animation ==========
+    const darkButton = document.querySelector('.btn-dark');
+    if (darkButton) {
+        gsap.from(darkButton, {
+            opacity: 0,
+            scale: 0.8,
+            delay: 1.0,
+            duration: 0.5,
+            ease: 'back.out(1.7)'
+        });
+    }
 });

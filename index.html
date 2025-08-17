@@ -395,99 +395,12 @@
             </div>
         </div>
     </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="js/common.js"></script>
 <script src="js/home.js"></script>
+<!-- Load libraries only once -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>// Wait for the DOM to be fully loaded before running the script
-document.addEventListener('DOMContentLoaded', () => {
-    const linesContainer = document.querySelector('.lines-container');
-    const numberOfLines = 18;
-    const baseDuration = 8000;
-
-    // Create lines with randomized properties
-    for (let i = 0; i < numberOfLines; i++) {
-        const line = document.createElement('div');
-        line.classList.add('line');
-        
-        line.style.setProperty('--opacity-peak', `${0.7 + Math.random() * 0.3}`);
-        line.style.setProperty('--drop-height', `${60 + Math.random() * 60}px`);
-        line.style.setProperty('--drop-duration', `${4000 + Math.random() * 2000}ms`);
-        line.style.setProperty('--animation-delay', `${Math.random() * 300}ms`);
-        
-        linesContainer.appendChild(line);
-    }
-
-    // GSAP Wave Animation
-    gsap.to(".line", {
-        backgroundPosition: "0% 100%",
-        duration: 8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: {
-            each: 0.1,
-            from: "center",
-            ease: "power2.inOut"
-        }
-    });
-
-    // Reset animations periodically
-    setInterval(() => {
-        document.querySelectorAll('.line').forEach(line => {
-            line.style.animation = 'none';
-            void line.offsetWidth;
-            line.style.animation = '';
-        });
-    }, 30000);
-});
-</script>
+<script src="https://unpkg.com/split-type"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
-
-    <!-- Main Animation Script -->
-    <script>
-        // Load the Lottie animation from a URL
-        lottie.loadAnimation({
-            container: document.getElementById('lottie-animation-container'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            // IMPORTANT: Replace this with the actual URL to your JSON file
-            path: 'SVG/fbBemVE774.json' 
-        });
-
-        // GSAP text animation runs after the DOM is loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            const elementsToAnimate = gsap.utils.toArray('.animate-text');
-            
-            elementsToAnimate.forEach((element, index) => {
-                const split = new SplitType(element, { types: 'words' });
-                gsap.set(element, { opacity: 1 });
-
-                gsap.from(split.words, {
-                    y: '100%',
-                    opacity: 0,
-                    stagger: 0.05,
-                    duration: 0.8,
-                    ease: 'power2.out',
-                    delay: index * 0.2, 
-                });
-            });
-
-            // Animate the button separately
-            gsap.from('.btn-dark', {
-                opacity: 0,
-                scale: 0.8,
-                delay: 1.0,
-                duration: 0.5,
-                ease: 'back.out(1.7)'
-            });
-        });
-    </script>
-
 </body>
 </html>
