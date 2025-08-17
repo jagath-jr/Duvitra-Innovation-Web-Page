@@ -248,53 +248,51 @@
 }
 
 /*========About Us Section========*/
+/* --- About Section Layout --- */
+/* --- About Section Layout --- */
         .about-section {
             display: flex;
             align-items: center;
-            gap: 4rem; /* Adjust space between image and text */
+            gap: 4rem;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 0.2rem;
-            color: #000;
+            margin: 4rem auto;
+            padding: 1rem;
         }
 
         .about-image-container {
-            flex-basis: 50%; /* Image takes up half the space */
-            border-radius: 16px; /* Rounded corners for the image */
-            overflow: hidden; /* Ensures the image respects the border-radius */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            width: 85%;
+            flex-basis: 50%;
+            min-width: 300px; /* Prevents the animation from getting too small */
         }
 
-        .about-image-container img {
+        /* Style the div container for the Lottie animation */
+        #lottie-animation-container {
             width: 100%;
             height: auto;
-            display: block;
+            aspect-ratio: 1 / 1; /* Ensures the container maintains a square shape */
         }
 
         .about-content {
-            flex-basis: 50%; /* Text takes up the other half */
+            flex-basis: 50%;
             margin: 0 1rem;
         }
 
+        /* --- Text and Button Styling --- */
         .about-heading {
             font-size: 3rem;
             font-weight: 600;
             text-transform: uppercase;
-            color: #000000;
-            letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
         }
 
         .about-subheading {
-            font-size: 2rem; /* 36px */
+            font-size: 2rem;
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1.5rem;
         }
 
         .about-description {
-            font-size: 1.125rem; /* 18px */
+            font-size: 1.125rem;
             color: #555;
             line-height: 1.7;
             margin-bottom: 2rem;
@@ -306,23 +304,33 @@
             background-color: #111;
             color: #fff;
             padding: 14px 28px;
-            border-radius: 25px; /* Pill-shaped button */
+            border-radius: 50px; /* Pill shape */
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.2s ease-out;
+            transition: transform 0.2s ease-out, background-color 0.2s ease;
         }
 
         .btn-dark:hover {
             transform: scale(1.05);
+            background-color: #333;
         }
 
-        /* --- Responsive Adjustments for About Section --- */
+        /* --- Responsive Adjustments --- */
         @media (max-width: 992px) {
             .about-section {
-                flex-direction: column; /* Stack image and text vertically */
+                flex-direction: column;
                 text-align: center;
+                gap: 2rem;
             }
         }
+
+        /* --- Animation Pre-Styling --- */
+        .animate-text {
+            opacity: 0;
+        }
+
+
+
 
 /* Main content container */
 .main-content_what-we-offer-a1 {
