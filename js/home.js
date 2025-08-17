@@ -1,13 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
-    gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
     // ========== Services Section Flip Cards (Scroll + Click/Touch) ==========
-    function flipCard(cardInner) {
+    function flipCard(cardInner, isManualFlip = true) {
         const currentRotation = gsap.getProperty(cardInner, "rotationX");
+        const targetRotation = currentRotation === 0 ? 180 : 0;
+        
         gsap.to(cardInner, {
-            rotationX: currentRotation === 0 ? 180 : 0,
-            duration: 0.6,
-            ease: "power1.inOut"
+            rotationX: targetRotation,
+            duration: isManualFlip ? 0.6 : 1,
+            ease: isManualFlip ? "back.out(1.7)" : "power2.inOut",
+            onComplete: () => {
+                // Update ARIA attributes for accessibility
+                cardInner.setAttribute('aria-expanded', targetRotation === 180);
+            }
         });
     }
 
@@ -15,47 +21,114 @@ document.addEventListener("DOMContentLoaded", function() {
         const serviceCards = gsap.utils.toArray(".service-item .service-card-inner");
         
         serviceCards.forEach(card => {
-            card.addEventListener("click", () => flipCard(card));
+            // Click/tap interaction
+            card.addEventListener("click", (e) => {
+                e.stopPropagation();
+                flipCard(card, true);
+            });
+            
+            // Touch interaction
             card.addEventListener("touchend", (e) => {
                 e.preventDefault();
-                flipCard(card);
+                flipCard(card, true);
             }, { passive: false });
+            
+            // Keyboard accessibility
+            card.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    flipCard(card, true);
+                }
+            });
+            
+            // Initialize ARIA attributes
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-expanded', 'false');
         });
     }
 
     ScrollTrigger.matchMedia({
-        // --- Desktop and Tablet Animation ---
-        "(min-width: 769px)": function() {
+        // --- Desktop Animation ---
+        "(min-width: 1025px)": function() {
             const servicesSection = document.querySelector(".services-section");
             const serviceCards = gsap.utils.toArray(".service-item .service-card-inner");
+            const serviceItems = gsap.utils.toArray(".service-item");
             const container = document.querySelector(".container");
 
             setupCardInteractions();
 
+            // Calculate pin duration based on content height
             const cardHeight = serviceCards[0].offsetHeight;
-            const scrollDistance = cardHeight * serviceCards.length * 0.6;
+            const scrollDistance = cardHeight * serviceCards.length * 0.8;
 
+            // Pin the entire section while scrolling
             ScrollTrigger.create({
                 trigger: servicesSection,
                 start: "top top",
                 end: `+=${scrollDistance}`,
                 pin: true,
                 pinSpacing: true,
-                id: "services-pin"
+                id: "services-pin",
+                anticipatePin: 1
             });
 
+            // Staggered flip animation on scroll
             gsap.to(serviceCards, {
                 rotationX: 180,
-                duration: 0.6,
-                stagger: 0.2,
-                ease: "power1.inOut",
+                duration: 1,
+                stagger: {
+                    each: 0.3,
+                    from: "center",
+                    ease: "power2.inOut"
+                },
+                ease: "power2.inOut",
                 scrollTrigger: {
                     trigger: servicesSection,
-                    start: "top top",
+                    start: "top top+=100",
                     end: `+=${scrollDistance}`,
-                    scrub: true,
-                    pin: false
+                    scrub: 1,
+                    pin: false,
+                    markers: false // Set to true for debugging
                 }
+            });
+
+            // Additional scale effect on hover
+            serviceItems.forEach(item => {
+                item.addEventListener("mouseenter", () => {
+                    gsap.to(item, {
+                        scale: 1.03,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                
+                item.addEventListener("mouseleave", () => {
+                    gsap.to(item, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        },
+        
+        // --- Tablet Animation ---
+        "(min-width: 769px) and (max-width: 1024px)": function() {
+            setupCardInteractions();
+            
+            // Simpler scroll-triggered animation for tablets
+            gsap.utils.toArray(".service-item").forEach((item, i) => {
+                const cardInner = item.querySelector('.service-card-inner');
+                
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: "top 70%",
+                    end: "top 20%",
+                    onEnter: () => flipCard(cardInner, false),
+                    onEnterBack: () => flipCard(cardInner, false),
+                    markers: false
+                });
             });
         },
         
@@ -63,25 +136,36 @@ document.addEventListener("DOMContentLoaded", function() {
         "(max-width: 768px)": function() {
             setupCardInteractions();
             
-            // Choose one approach for mobile - either scroll-triggered or click-only
-            // Option 1: Scroll-triggered animation
-            gsap.utils.toArray(".service-item").forEach(item => {
-                const cardInner = item.querySelector('.service-card-inner');
-                
-                gsap.to(cardInner, {
-                    rotationX: 180,
+            // Click-only interaction for mobile with entrance animation
+            gsap.utils.toArray(".service-item").forEach((item, i) => {
+                gsap.from(item, {
+                    opacity: 0,
+                    y: 50,
                     duration: 0.6,
-                    ease: "power1.inOut",
+                    delay: i * 0.1,
+                    ease: "back.out(1.2)",
                     scrollTrigger: {
                         trigger: item,
-                        start: "top 80%",
-                        end: "bottom 10%",
-                        toggleActions: "play reverse play reverse",
+                        start: "top 85%",
+                        toggleActions: "play none none none"
                     }
                 });
             });
-            
-            // OR Option 2: Click-only interaction (remove the above if using this)
+        }
+    });
+
+    // Additional animation for the Lottie element
+    gsap.from("#service-lottie", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: ".service-intro",
+            start: "top 80%",
+            toggleActions: "play none none none"
+        
+                // OR Option 2: Click-only interaction (remove the above if using this)
             // Just call setupCardInteractions() and nothing else
         }
     });
