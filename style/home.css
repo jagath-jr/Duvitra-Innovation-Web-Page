@@ -338,7 +338,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4rem 1.5rem; /* Vertical and horizontal padding */
+    padding: 7rem 1.5rem 1rem 1.5rem;
     min-height: 50vh; /* Ensure it takes up a good portion of the screen */
 }
 

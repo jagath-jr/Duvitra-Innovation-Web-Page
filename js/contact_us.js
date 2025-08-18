@@ -20,4 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(targetTab).classList.add('active');
         });
     });
+
+
+    
 });

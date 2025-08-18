@@ -138,28 +138,34 @@ body {
 
 /*========Footer section=========*/
         /* General Footer Styling */
-        .site-footer {
-            background-color: #000;
-            color: #ffffff;
-            padding: 80px 0 0 0;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            height: 40rem;
-        }
+.site-footer {
+    background-color: #050505; /* Fallback color */
+    background-image: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)), 
+                     url('../img/OJO4YQ0.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    padding: 80px 0 0 0;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    height: 40rem;
+    z-index: 1; /* This is fine as the container */
+}
 
-        /* Faded Background Text */
-        .footer-background-text {
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(6.2rem, 25vw, 25rem);
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.2);
-            z-index: 1;
-        }
-
+/* Faded Background Text - Now on top layer */
+.footer-background-text {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(6.2rem, 25vw, 25rem);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.2);
+    z-index: 100; /* Increased to ensure it's on top */
+    pointer-events: none; /* Optional: prevents the text from blocking clicks */
+}
         /* Content Container */
         .site-footer .container {
             max-width: 75rem;
