@@ -8,7 +8,7 @@ body {
 
 /* About Us Section */
 .about-us {
-    padding: 6.563rem 1.25rem;
+    padding: 6.563rem 1.2rem 0rem 1.2rem;
     background-color: #fff;
     text-align: justify;
 }
@@ -16,7 +16,7 @@ body {
 .about-us-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 40px;
 }
@@ -93,9 +93,11 @@ body {
         font-size: 1rem;
     }
 
-    .about-us, .full-service {
-        padding: 5.625rem 0.938rem;
+    .about-us {
+        padding: 5.625rem 1rem 0.938rem 1rem;
     }
+    .full-service {
+        padding:1rem 0.938rem
 }
 
 /* Container for centering content */

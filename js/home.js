@@ -292,7 +292,7 @@ gsap.registerPlugin(ScrollTrigger);
         lottie.loadAnimation({
             container: lottieContainer,
             renderer: 'svg',
-            loop: true,
+            loop: false,
             autoplay: true,
             path: 'SVG/Connect with us.json'
         });
