@@ -152,6 +152,8 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     height: 40rem;
     z-index: 1; /* This is fine as the container */
+    max-width: 100rem;
+    margin: 0 auto;
 }
 
 /* Faded Background Text - Now on top layer */

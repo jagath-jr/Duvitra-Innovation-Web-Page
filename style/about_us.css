@@ -4,12 +4,15 @@ body {
     padding: 0;
     background-color: #f9f9f9;
     color: #333;
+  
 }
 
 /* About Us Section */
 .about-us {
     padding: 6.563rem 1.25rem;
     background-color: #fff;
+    max-width: 75rem;
+    margin: 0 auto;
 }
 
 .about-us-container {
