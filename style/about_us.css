@@ -8,9 +8,8 @@ body {
 
 /* About Us Section */
 .about-us {
-    padding: 6.563rem 1.2rem 0rem 1.2rem;
+    padding: 6.563rem 1.25rem;
     background-color: #fff;
-    text-align: justify;
 }
 
 .about-us-container {
@@ -93,11 +92,12 @@ body {
         font-size: 1rem;
     }
 
-    .about-us {
-        padding: 5.625rem 1rem 0.938rem 1rem;
+    .about-us{
+        padding: 5rem 1rem 0rem 1rem;
     }
     .full-service {
-        padding:1rem 0.938rem
+        padding: 1rem 1rem 0.938rem 1rem;
+    }
 }
 
 /* Container for centering content */
