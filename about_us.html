@@ -16,8 +16,9 @@
 <section class="about-us">
             <div class="about-us-container">
                 <div class="about-us-image">
-                    <img src="img\about_us\Tech Life Remote Life.png" alt="Illustration of a person working on a laptop surrounded by abstract elements">
-                </div>
+    <div id="background-container" style="position: absolute;"></div>
+    <div id="human-container" style="position: relative;"></div>
+</div>
                 <div class="about-us-content">
                     <h1>About Us</h1>
                     <p class="tagline">We don’t just build digital solutions — we craft experiences that grow businesses and connect people.</p>
@@ -111,5 +112,24 @@
 <script src="js/about_us.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<script>// Load the looping background
+lottie.loadAnimation({
+  container: document.getElementById('background-container'),
+  loop: true,
+  autoplay: true,
+  path: 'SVG/background.json' 
+});
+
+// Load the human character to play once
+lottie.loadAnimation({
+  container: document.getElementById('human-container'),
+  loop: false,
+  autoplay: true,
+  path: 'SVG/human.json' 
+});
+</script>
 </body>
 </html>
