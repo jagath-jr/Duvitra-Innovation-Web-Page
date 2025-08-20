@@ -92,6 +92,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     color: #555;
+    max-width: 65rem;
 }
 
 /* Responsive Design */

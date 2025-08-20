@@ -76,8 +76,8 @@
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 900;
+    font-size: 2.8rem;
+    font-weight: 800;
     margin-bottom: 1rem;
     margin-top:-1rem;
 }
@@ -97,7 +97,7 @@
 
 .stats-section {
     position: absolute;
-    top: 61%;
+    top: 63%;
     left: 0;
     right: 0;
     display: flex;
@@ -182,7 +182,7 @@
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
-        margin-top:-18rem;
+        margin-top:-12rem;
     }
     
     .hero-subtitle {
@@ -486,13 +486,13 @@
  * Logo Images
  * ===================================================================== */
 .logos-slide-2025 img {
- height: 40px;
- width: auto;
-flex-shrink: 0; /* Prevents logos from shrinking */
-opacity: 0.6;
-transition: opacity 0.3s ease; /* Simplified transition */
-    margin-right: 4rem; /* ഓരോ ലോഗോയ്ക്കും ശേഷം 4rem ഗ്യാപ്പ് നൽകുന്നു */
+    height: 40px;
+    width: auto;
+    flex-shrink: 0; /* Prevents logos from shrinking */
+    opacity: 0.6;
+    transition: opacity 0.3s ease; /* Simplified transition */
 }
+
 /* * =====================================================================
  * Hover Effects
  * ===================================================================== */
