@@ -54,7 +54,7 @@
     flex: 1 1 40%;
 }
 
-.intro-image img {
+.intro-image lottie-player {
     max-width: 100%;
     display: block;
 }
@@ -63,6 +63,7 @@
 #webdev-expertise {
     padding: 50px 20px;
     background-color: #f9f9f9;
+    margin-bottom: 1rem;
 }
 
 .section-heading {
