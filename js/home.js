@@ -1,26 +1,152 @@
-document.addEventListener("DOMContentLoaded", function() {
-gsap.registerPlugin(ScrollTrigger);
-
-    // ========== Services Section Flip Cards (Scroll + Click/Touch) ==========
-    function flipCard(cardInner, isManualFlip = true) {
-        const currentRotation = gsap.getProperty(cardInner, "rotationX");
-        const targetRotation = currentRotation === 0 ? 180 : 0;
+document.addEventListener('DOMContentLoaded', function() {
+    // Register plugins once
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Cache all selectors at once
+    const elements = {
+        servicesSection: document.querySelector(".services-section"),
+        serviceItems: gsap.utils.toArray(".service-item"),
+        serviceCards: gsap.utils.toArray(".service-item .service-card-inner"),
+        statsSection: document.getElementById('statsSection'),
+        lottieContainer: document.getElementById('lottie-animation-container'),
+        darkButton: document.querySelector('.btn-dark'),
+        linesContainer: document.querySelector('.lines-container'),
+        sliderContainer: document.querySelector('.logo-slider-2025'),
+        lottiePlayer: document.getElementById('service-lottie'),
+        slideTrack: document.querySelector('.logos-slide-2025'),
+        productCards: document.querySelectorAll('.product-card')
+    };
+    
+    // Initialize all components
+    function init() {
+        setupServicesAnimations();
+        setupCounters();
+        setupLogoSlider();
+        setupProductCards();
+        setupLinesAnimation();
+        setupLottieAnimation();
+        setupTextAnimations();
+        setupButtonAnimation();
+    }
+    
+    // ========== Services Section Animations ==========
+    function setupServicesAnimations() {
+        if (!elements.servicesSection || !elements.serviceCards.length) return;
         
-        gsap.to(cardInner, {
-            rotationX: targetRotation,
-            duration: isManualFlip ? 0.6 : 1,
-            ease: isManualFlip ? "back.out(1.7)" : "power2.inOut",
-            onComplete: () => {
-                // Update ARIA attributes for accessibility
-                cardInner.setAttribute('aria-expanded', targetRotation === 180);
+        // Initially pause the Lottie animation
+        if (elements.lottiePlayer) elements.lottiePlayer.pause();
+        
+        // Create scroll trigger for Lottie animation
+        ScrollTrigger.create({
+            trigger: "#services",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+            onEnter: () => elements.lottiePlayer && elements.lottiePlayer.play(),
+            onLeaveBack: () => elements.lottiePlayer && elements.lottiePlayer.stop()
+        });
+        
+        // Setup card interactions based on device
+        setupCardInteractions();
+        
+        // Setup responsive animations
+        ScrollTrigger.matchMedia({
+            // Desktop
+            "(min-width: 1025px)": setupDesktopAnimations,
+            // Tablet
+            "(min-width: 769px) and (max-width: 1024px)": setupTabletAnimations,
+            // Mobile
+            "(max-width: 768px)": setupMobileAnimations
+        });
+        
+        // Additional animation for the Lottie element
+        gsap.from("#service-lottie", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".service-intro",
+                start: "top 80%",
+                toggleActions: "play none none none"
             }
         });
     }
-
-    function setupCardInteractions() {
-        const serviceCards = gsap.utils.toArray(".service-item .service-card-inner");
+    
+    function setupDesktopAnimations() {
+        setupHoverEffects();
         
-        serviceCards.forEach(card => {
+        // Calculate pin duration based on content height
+        const cardHeight = elements.serviceCards[0]?.offsetHeight || 0;
+        const scrollDistance = cardHeight * elements.serviceCards.length * 0.8;
+        
+        // Pin the entire section while scrolling
+        ScrollTrigger.create({
+            trigger: elements.servicesSection,
+            start: "top top",
+            end: `+=${scrollDistance}`,
+            pin: true,
+            pinSpacing: true,
+            id: "services-pin",
+            anticipatePin: 1
+        });
+        
+        // Staggered flip animation on scroll
+        gsap.to(elements.serviceCards, {
+            rotationX: 180,
+            duration: 1,
+            stagger: {
+                each: 0.3,
+                from: "center",
+                ease: "power2.inOut"
+            },
+            ease: "power2.inOut",
+            scrollTrigger: {
+                trigger: elements.servicesSection,
+                start: "top top+=100",
+                end: `+=${scrollDistance}`,
+                scrub: 1,
+                pin: false
+            }
+        });
+    }
+    
+    function setupTabletAnimations() {
+        // Simpler scroll-triggered animation for tablets
+        elements.serviceItems.forEach((item) => {
+            const cardInner = item.querySelector('.service-card-inner');
+            if (!cardInner) return;
+            
+            ScrollTrigger.create({
+                trigger: item,
+                start: "top 70%",
+                end: "top 20%",
+                onEnter: () => flipCard(cardInner, false),
+                onEnterBack: () => flipCard(cardInner, false)
+            });
+        });
+    }
+    
+    function setupMobileAnimations() {
+        // Click-only interaction for mobile with entrance animation
+        elements.serviceItems.forEach((item, i) => {
+            gsap.from(item, {
+                opacity: 0,
+                y: 50,
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: "back.out(1.2)",
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+    }
+    
+    function setupCardInteractions() {
+        elements.serviceCards.forEach(card => {
             // Click/tap interaction
             card.addEventListener("click", (e) => {
                 e.stopPropagation();
@@ -47,152 +173,47 @@ gsap.registerPlugin(ScrollTrigger);
             card.setAttribute('aria-expanded', 'false');
         });
     }
-
-    ScrollTrigger.matchMedia({
-        // --- Desktop Animation ---
-        "(min-width: 1025px)": function() {
-            const servicesSection = document.querySelector(".services-section");
-            const serviceCards = gsap.utils.toArray(".service-item .service-card-inner");
-            const serviceItems = gsap.utils.toArray(".service-item");
-            const container = document.querySelector(".container");
-
-            setupCardInteractions();
-
-            // Calculate pin duration based on content height
-            const cardHeight = serviceCards[0].offsetHeight;
-            const scrollDistance = cardHeight * serviceCards.length * 0.8;
-
-            // Pin the entire section while scrolling
-            ScrollTrigger.create({
-                trigger: servicesSection,
-                start: "top top",
-                end: `+=${scrollDistance}`,
-                pin: true,
-                pinSpacing: true,
-                id: "services-pin",
-                anticipatePin: 1
-            });
-
-            // Staggered flip animation on scroll
-            gsap.to(serviceCards, {
-                rotationX: 180,
-                duration: 1,
-                stagger: {
-                    each: 0.3,
-                    from: "center",
-                    ease: "power2.inOut"
-                },
-                ease: "power2.inOut",
-                scrollTrigger: {
-                    trigger: servicesSection,
-                    start: "top top+=100",
-                    end: `+=${scrollDistance}`,
-                    scrub: 1,
-                    pin: false,
-                    markers: false // Set to true for debugging
-                }
-            });
-
-            // Additional scale effect on hover
-            serviceItems.forEach(item => {
-                item.addEventListener("mouseenter", () => {
-                    gsap.to(item, {
-                        scale: 1.03,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
-                
-                item.addEventListener("mouseleave", () => {
-                    gsap.to(item, {
-                        scale: 1,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
+    
+    function setupHoverEffects() {
+        elements.serviceItems.forEach(item => {
+            item.addEventListener("mouseenter", () => {
+                if ('ontouchstart' in window) return; // Skip on touch devices
+                gsap.to(item, {
+                    scale: 1.03,
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
             });
-        },
-        
-        // --- Tablet Animation ---
-        "(min-width: 769px) and (max-width: 1024px)": function() {
-            setupCardInteractions();
             
-            // Simpler scroll-triggered animation for tablets
-            gsap.utils.toArray(".service-item").forEach((item, i) => {
-                const cardInner = item.querySelector('.service-card-inner');
-                
-                ScrollTrigger.create({
-                    trigger: item,
-                    start: "top 70%",
-                    end: "top 20%",
-                    onEnter: () => flipCard(cardInner, false),
-                    onEnterBack: () => flipCard(cardInner, false),
-                    markers: false
+            item.addEventListener("mouseleave", () => {
+                if ('ontouchstart' in window) return; // Skip on touch devices
+                gsap.to(item, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
             });
-        },
-        
-        // --- Mobile Animation ---
-        "(max-width: 768px)": function() {
-            setupCardInteractions();
-            
-            // Click-only interaction for mobile with entrance animation
-            gsap.utils.toArray(".service-item").forEach((item, i) => {
-                gsap.from(item, {
-                    opacity: 0,
-                    y: 50,
-                    duration: 0.6,
-                    delay: i * 0.1,
-                    ease: "back.out(1.2)",
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 85%",
-                        toggleActions: "play none none none"
-                    }
-                });
-            });
-        }
-    });
-
-    // Additional animation for the Lottie element
-    gsap.from("#service-lottie", {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".service-intro",
-            start: "top 80%",
-            toggleActions: "play none none none"
-        
-                // OR Option 2: Click-only interaction (remove the above if using this)
-            // Just call setupCardInteractions() and nothing else
-        }
-    });
-
-    // ========== Counter Animation ==========
-    function animateCounter(element, endValue, duration) {
-        let startTime = null;
-        const startValue = 0;
-        
-        function animate(timestamp) {
-            if (!startTime) startTime = timestamp;
-            const progress = timestamp - startTime;
-            const progressFraction = Math.min(progress / duration, 1);
-            const currentValue = Math.floor(progressFraction * endValue);
-            element.textContent = currentValue + '+';
-            
-            if (progress < duration) {
-                requestAnimationFrame(animate);
-            }
-        }
-        
-        requestAnimationFrame(animate);
+        });
     }
-
+    
+    function flipCard(cardInner, isManualFlip = true) {
+        const currentRotation = gsap.getProperty(cardInner, "rotationX");
+        const targetRotation = currentRotation === 0 ? 180 : 0;
+        
+        gsap.to(cardInner, {
+            rotationX: targetRotation,
+            duration: isManualFlip ? 0.6 : 1,
+            ease: isManualFlip ? "back.out(1.7)" : "power2.inOut",
+            onComplete: () => {
+                // Update ARIA attributes for accessibility
+                cardInner.setAttribute('aria-expanded', targetRotation === 180);
+            }
+        });
+    }
+    
+    // ========== Counter Animation ==========
     function setupCounters() {
-        const statsSection = document.getElementById('statsSection');
-        if (!statsSection) return;
+        if (!elements.statsSection) return;
         
         const counters = document.querySelectorAll('.stat-number');
         let countersAnimated = false;
@@ -211,47 +232,91 @@ gsap.registerPlugin(ScrollTrigger);
             });
         }, { threshold: 0.5 });
         
-        observer.observe(statsSection);
+        observer.observe(elements.statsSection);
     }
-    setupCounters();
-
-    // ========== Logo Slider Optimization ==========
-    const slider = document.querySelector('.logo-slider-2025');
-    if (slider) {
-        const slideTrack = document.querySelector('.logos-slide-2025');
+    
+    function animateCounter(element, endValue, duration) {
+        let startTime = null;
+        const startValue = 0;
         
-        if (slideTrack && !slideTrack.querySelector('[data-cloned]')) {
-            const logos = slideTrack.innerHTML;
-            slideTrack.innerHTML = logos + logos;
-            slideTrack.querySelectorAll('img').forEach((img, index) => {
-                if (index >= 8) img.setAttribute('data-cloned', 'true');
-            });
+        function animate(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const progressFraction = Math.min(progress / duration, 1);
+            const currentValue = Math.floor(progressFraction * endValue);
+            element.textContent = currentValue + '+';
+            
+            if (progress < duration) {
+                requestAnimationFrame(animate);
+            }
         }
         
-        document.addEventListener("visibilitychange", () => {
-            if (slideTrack) {
-                slideTrack.style.animationPlayState = document.hidden ? 'paused' : 'running';
-            }
-        });
-        
-        if (slideTrack) slideTrack.style.transform = 'translateZ(0)';
+        requestAnimationFrame(animate);
     }
+    
+    // ========== Logo Slider Animation ==========
+   function setupLogoSlider() {
+    if (!elements.sliderContainer || !elements.slideTrack) return;
 
-    // ========== Product Cards Interaction ==========
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach(card => {
-        card.addEventListener("click", () => {
-            const title = card.querySelector('h3')?.innerText;
-            if (title) console.log(`Clicked on ${title} card`);
-        });
+    const logos = elements.slideTrack.querySelectorAll('img');
+    if (!logos.length) return;
+
+    // Clone logos for the seamless loop
+    logos.forEach(logo => {
+        const clone = logo.cloneNode(true);
+        elements.slideTrack.appendChild(clone);
     });
 
-    // ========== Lines Animation ==========
-    const linesContainer = document.querySelector('.lines-container');
-    if (linesContainer) {
-        const numberOfLines = 18;
-        const baseDuration = 8000;
+    // Create a GSAP timeline that repeats indefinitely
+    const tl = gsap.timeline({
+        repeat: -1
+    });
 
+    // 1. Animate the slide to the halfway point
+    tl.to(elements.slideTrack, {
+        x: "-50%",
+        ease: "none",
+        duration: 35
+    });
+
+    // 2. Instantly reset the position to the start (this is invisible)
+    tl.set(elements.slideTrack, {
+        x: "0"
+    });
+
+    // Pause animation on hover
+    elements.sliderContainer.addEventListener('mouseenter', () => tl.pause());
+    elements.sliderContainer.addEventListener('mouseleave', () => tl.resume());
+
+    // Pause animation when the browser tab is not active
+    document.addEventListener("visibilitychange", () => {
+        // Use tl.pause() when hidden and tl.resume() when visible
+        document.hidden ? tl.pause() : tl.resume();
+    });
+}
+    
+    
+    // ========== Product Cards Interaction ==========
+    function setupProductCards() {
+        if (!elements.productCards.length) return;
+        
+        elements.productCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const title = card.querySelector('h3')?.innerText;
+                if (title) console.log(`Clicked on ${title} card`);
+            });
+        });
+    }
+    
+    // ========== Lines Animation ==========
+    function setupLinesAnimation() {
+        if (!elements.linesContainer) return;
+        
+        const numberOfLines = 18;
+
+        // Create document fragment for better performance
+        const fragment = document.createDocumentFragment();
+        
         for (let i = 0; i < numberOfLines; i++) {
             const line = document.createElement('div');
             line.classList.add('line');
@@ -261,9 +326,12 @@ gsap.registerPlugin(ScrollTrigger);
             line.style.setProperty('--drop-duration', `${4000 + Math.random() * 2000}ms`);
             line.style.setProperty('--animation-delay', `${Math.random() * 300}ms`);
             
-            linesContainer.appendChild(line);
+            fragment.appendChild(line);
         }
+        
+        elements.linesContainer.appendChild(fragment);
 
+        // Use a single GSAP animation for all lines
         gsap.to(".line", {
             backgroundPosition: "0% 100%",
             duration: 8,
@@ -277,6 +345,7 @@ gsap.registerPlugin(ScrollTrigger);
             }
         });
 
+        // Reset animation periodically
         setInterval(() => {
             document.querySelectorAll('.line').forEach(line => {
                 line.style.animation = 'none';
@@ -285,22 +354,25 @@ gsap.registerPlugin(ScrollTrigger);
             });
         }, 30000);
     }
-
+    
     // ========== Lottie Animation ==========
-    const lottieContainer = document.getElementById('lottie-animation-container');
-    if (lottieContainer && typeof lottie !== 'undefined') {
-        lottie.loadAnimation({
-            container: lottieContainer,
-            renderer: 'svg',
-            loop: false,
-            autoplay: true,
-            path: 'SVG/Connect with us.json'
-        });
+    function setupLottieAnimation() {
+        if (elements.lottieContainer && typeof lottie !== 'undefined') {
+            lottie.loadAnimation({
+                container: elements.lottieContainer,
+                renderer: 'svg',
+                loop: false,
+                autoplay: true,
+                path: 'SVG/Connect with us.json'
+            });
+        }
     }
-
+    
     // ========== Text Animations ==========
-    const elementsToAnimate = gsap.utils.toArray('.animate-text');
-    if (elementsToAnimate.length && typeof SplitType !== 'undefined') {
+    function setupTextAnimations() {
+        const elementsToAnimate = gsap.utils.toArray('.animate-text');
+        if (!elementsToAnimate.length || typeof SplitType === 'undefined') return;
+        
         elementsToAnimate.forEach((element, index) => {
             const split = new SplitType(element, { types: 'words' });
             gsap.set(element, { opacity: 1 });
@@ -323,11 +395,12 @@ gsap.registerPlugin(ScrollTrigger);
             });
         });
     }
-
+    
     // ========== Button Animation ==========
-    const darkButton = document.querySelector('.btn-dark');
-    if (darkButton) {
-        gsap.from(darkButton, {
+    function setupButtonAnimation() {
+        if (!elements.darkButton) return;
+        
+        gsap.from(elements.darkButton, {
             opacity: 0,
             scale: 0.8,
             delay: 1.0,
@@ -335,4 +408,7 @@ gsap.registerPlugin(ScrollTrigger);
             ease: 'back.out(1.7)'
         });
     }
+    
+    // Start the initialization
+    init();
 });

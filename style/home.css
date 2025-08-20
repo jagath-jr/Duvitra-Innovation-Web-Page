@@ -478,45 +478,34 @@
     align-items: center;
     gap: 4rem;
     width: max-content; /* Important for infinite effect */
-    animation: slide-2025 35s linear infinite;
-    will-change: transform; /* Optimizes for animation performance */
+    /* REMOVED: The 'animation' property is no longer needed */
+    /* REMOVED: The 'will-change' property is handled well by GSAP */
 }
 
 /* * =====================================================================
  * Logo Images
  * ===================================================================== */
 .logos-slide-2025 img {
-    height: 40px;
-    width: auto;
-    flex-shrink: 0; /* Prevents logos from shrinking */
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: filter 0.3s ease, opacity 0.3s ease;
+ height: 40px;
+ width: auto;
+flex-shrink: 0; /* Prevents logos from shrinking */
+opacity: 0.6;
+transition: opacity 0.3s ease; /* Simplified transition */
+    margin-right: 4rem; /* ഓരോ ലോഗോയ്ക്കും ശേഷം 4rem ഗ്യാപ്പ് നൽകുന്നു */
 }
-
 /* * =====================================================================
  * Hover Effects
  * ===================================================================== */
-.logo-slider-2025:hover .logos-slide-2025 {
-    animation-play-state: paused;
-}
+/* REMOVED: Pausing is now handled by JavaScript/GSAP */
 
 .logos-slide-2025 img:hover {
-    filter: grayscale(0%);
     opacity: 1;
 }
 
 /* * =====================================================================
- * Keyframe Animation - Updated for seamless looping
+ * Keyframe Animation
  * ===================================================================== */
-@keyframes slide-2025 {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%); /* Only translate half way since we duplicated content */
-    }
-}
+/* REMOVED: @keyframes are no longer needed */
 
 /* * =====================================================================
  * Responsive Design
@@ -529,175 +518,154 @@
         height: 30px;
     }
 }
-
 /*
 --- Services Section Styling ---
 */
 
-.services-section {
-    padding: 60px 0;
-    background-color: #fff;
-    /* Remove overflow: hidden if present */
-}
+ .services-section {
+            padding: 60px 0;
+            background-color: #fff;
+            position: relative;
+            z-index: 1;
+            top: -1rem;
+        }
 
+        /* Grid layout for the two columns */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 50px; /* Space between the columns */
+            align-items: start; /* Align items to the top */
+        }
 
-/* Grid layout for the two columns */
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 50px; /* Space between the columns */
-    align-items: start; /* Align items to the top */
-}
+        /* Left Column: Introduction */
+        .service-intro .section-title {
+            font-size: 2.5rem; /* 40px */
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
-/* Left Column: Introduction */
-.service-intro .section-title {
-    font-size: 2.5rem; /* 40px */
-    font-weight: 700;
-    margin-bottom: 20px;
-}
+        .service-intro .section-description {
+            font-size: 1rem; /* 16px */
+            color: #555;
+            margin-bottom: 30px;
+        }
 
-.service-intro .section-description {
-    font-size: 1rem; /* 16px */
-    color: #555;
-    margin-bottom: 30px;
-}
-.services-section {
-    position: relative;
-    z-index: 1;
-    top: -1rem;
-}
-.service-card-inner {
-    cursor: pointer; /* Shows it's clickable */
-    transition: transform 0.6s ease; /* Fallback for non-GSAP browsers */
-    transform-style: preserve-3d;
-}
+        .intro-image-container {
+            width: 100%;
+        }
 
-/* Prevent text selection when clicking */
-.service-card-front, 
-.service-card-back {
-    user-select: none;
-    -webkit-user-select: none;
-}
-.intro-image-container {
-    width: 100%;
-}
+        /* Right Column: Service List */
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Space between service items */
+            padding-top: 1.5rem; /* Align content slightly better with the title */
+        }
 
-.intro-image {
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
+        /*
+        --- Card Flip Styling ---
+        */
 
-/* Right Column: Service List */
-.service-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Space between service items */
-    padding-top: 1.5rem; /* Align content slightly better with the title */
-}
+        /* Service item now acts as a 3D container */
+        .service-item {
+            perspective: 1000px; /* Creates the 3D space */
+            background-color: transparent; /* Remove background from the container */
+            border: none;
+            height: 12rem;
+        }
 
-/*
---- Card Flip Styling ---
-*/
+        /* The inner element that will be flipped */
+        .service-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer; /* Shows it's clickable */
+        }
 
-/* Service item now acts as a 3D container */
-.service-item {
-    perspective: 1000px; /* Creates the 3D space */
-    background-color: transparent; /* Remove background from the container */
-    border: none;
-     /* Give it a height */
-    height: 12rem;
-}
+        /* Shared styles for both front and back faces */
+        .service-card-front,
+        .service-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* For Safari */
+            backface-visibility: hidden; /* Hides the back of the element when flipped */
 
-/* The inner element that will be flipped */
-.service-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
+            /* Re-apply original item styles here */
+            padding: 2.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box; /* Ensures padding doesn't affect width/height */
+        }
 
-/* Shared styles for both front and back faces */
-.service-card-front,
-.service-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* For Safari */
-    backface-visibility: hidden; /* Hides the back of the element when flipped */
+        /* Prevent text selection when clicking */
+        .service-card-front, 
+        .service-card-back {
+            user-select: none;
+            -webkit-user-select: none;
+        }
 
-    /* Re-apply original item styles here */
-    padding: 2.5rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    box-sizing: border-box; /* Ensures padding doesn't affect width/height */
-}
+        /* Position the back face behind the front face */
+        .service-card-back {
+            transform: rotateX(180deg);
+        }
 
-/* Position the back face behind the front face */
-.service-card-back {
-    transform: rotateX(180deg);
-}
+        .service-item .service-title {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
 
+        .service-item .service-description {
+            font-size: 1rem; /* 16px */
+            color: #555;
+            margin-bottom: 0;
+        }
 
-.service-item .service-title {
-    font-size: 1.5rem; /* 24px */
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
+        /*
+        --- Responsive Design ---
+        */
 
-.service-item .service-description {
-    font-size: 1rem; /* 16px */
-    color: #555;
-    margin-bottom: 0;
-}
+        /* For tablets and smaller desktops */
+        @media (max-width: 992px) {
+            .services-grid {
+                gap: 30px;
+            }
 
+            .service-intro .section-title {
+                font-size: 2rem;
+            }
 
-/*
---- Responsive Design ---
-*/
+            .service-item .service-title {
+                font-size: 1.25rem;
+            }
+        }
 
-/* For tablets and smaller desktops */
-@media (max-width: 992px) {
-    .services-grid {
-        gap: 30px;
-    }
+        /* For mobile devices */
+        @media (max-width: 768px) {
+            .services-grid {
+                /* Stack the columns on top of each other */
+                grid-template-columns: 1fr;
+            }
 
-    .service-intro .section-title {
-        font-size: 2rem;
-    }
+            .service-list {
+                padding-top: 0; /* Remove top padding on mobile */
+            }
 
-    .service-item .service-title {
-        font-size: 1.25rem;
-    }
-}
-
-
-/* For mobile devices */
-@media (max-width: 768px) {
-    .services-grid {
-        /* Stack the columns on top of each other */
-        grid-template-columns: 1fr;
-    }
-
-    .service-list {
-        padding-top: 0; /* Remove top padding on mobile */
-    }
-
-    .service-intro .section-title,
-    .service-intro .section-description {
-        text-align: center;
-    }
-    .service-item {
-        min-height: 10rem; /* Ensure consistent touch area */
-    }
-}
-
-
+            .service-intro .section-title,
+            .service-intro .section-description {
+                text-align: center;
+            }
+            .service-item {
+                min-height: 10rem; /* Ensure consistent touch area */
+            }
+        }
 /* --- Container for consistent centering and padding --- */
 .container {
     width: 90%;
