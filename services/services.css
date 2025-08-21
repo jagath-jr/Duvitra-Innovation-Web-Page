@@ -94,9 +94,9 @@
     max-width: 320px;
    
 }
-.expertise-card img {
+/* .expertise-card img {
     margin-bottom: 15px;
-}
+} */
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -134,7 +134,8 @@
     height: 100%;
     padding: 2rem;
     text-decoration: none;
-    color: inherit; /* Inherit text color from parent */
+    color: inherit;
+    text-align: center; 
 }
 
 .expertise-card:hover {
@@ -143,12 +144,12 @@
 }
 
 /* Maintain existing card styling while making links clickable */
-.expertise-card img, 
+.expertise-card .icon-container, 
 .expertise-card h3, 
 .expertise-card p {
-    pointer-events: none; /* Allows click to pass through to the <a> tag */
-    position: relative; /* Maintains stacking context */
-    z-index: 1; /* Ensures content stays above the pseudo-element */
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
 }
 
 /* Optional: Add a subtle overlay on hover */
@@ -169,29 +170,39 @@
     opacity: 1;
 }
 
-/* Focus styles for accessibility */
-/* .expertise-card a:focus {
-    outline: 2px solid #3b82f6;
-    outline-offset: 2px;
-} */
-
 /* Maintain existing card layout */
 .expertise-card {
     background-color: #f9f9f9;
     border-radius: 1rem;
     border: 1px solid #eee;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* Keeps child elements within border radius */
+    overflow: hidden;
+}
+
+/* Styles for circular icon background */
+.icon-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--nnn, linear-gradient(180deg, rgba(0, 134, 233, 0.24) 0%, rgba(0, 236, 118, 0.18) 100%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem; 
 }
 
 .expertise-card img {
-    margin-bottom: 1.5rem;
+    /* Flexbox in the parent handles alignment. No styles needed. */
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;  /* <-- Adjust this value */
+    height: 2.8rem; /* <-- Adjust this value */
 }
 
 .expertise-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #1e3a8a; /* Your blue color from services page */
+    color: #1e3a8a;
 }
 
 .expertise-card p {
