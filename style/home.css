@@ -249,8 +249,7 @@
 }
 
 /*========About Us Section========*/
-/* --- About Section Layout --- */
-/* --- About Section Layout --- */
+
         .about-section {
             display: flex;
             align-items: center;
@@ -486,11 +485,11 @@
  * Logo Images
  * ===================================================================== */
 .logos-slide-2025 img {
-    height: 40px;
+    height: 4rem;
     width: auto;
     flex-shrink: 0; /* Prevents logos from shrinking */
-    opacity: 0.6;
-    transition: opacity 0.3s ease; /* Simplified transition */
+    opacity: 1;
+    /* transition: opacity 0.3s ease; Simplified transition */
 }
 
 /* * =====================================================================
@@ -498,9 +497,9 @@
  * ===================================================================== */
 /* REMOVED: Pausing is now handled by JavaScript/GSAP */
 
-.logos-slide-2025 img:hover {
+/* .logos-slide-2025 img:hover {
     opacity: 1;
-}
+} */
 
 /* * =====================================================================
  * Keyframe Animation

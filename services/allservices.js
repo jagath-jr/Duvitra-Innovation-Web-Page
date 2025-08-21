@@ -6,6 +6,7 @@ const servicesData = {
     description: "We specialize in creating responsive websites and high-performance mobile applications that deliver exceptional user experiences. Our development process combines cutting-edge technologies with industry best practices to ensure your digital product stands out in today's competitive market.",
     lottieSrc: "../SVG/WebsiteDev.json",
     features: [
+      "Website & Mobile App Development",
       "Custom website development",
       "iOS and Android app development",
       "Progressive Web Apps (PWAs)",
@@ -21,6 +22,7 @@ const servicesData = {
     description: "Our design team creates visually stunning and highly functional user interfaces that enhance user engagement and satisfaction. We also develop compelling marketing materials that effectively communicate your brand message and value proposition.",
     lottieSrc: "../SVG/UIUX Designer.json",
     features: [
+      "UI/UX & Marketing Materials Design",
       "User research & persona development",
       "Wireframing & prototyping",
       "UI/UX design for web and mobile",
@@ -36,6 +38,7 @@ const servicesData = {
     description: "Our comprehensive digital marketing services help you establish a strong online presence, reach your target audience, and convert visitors into customers. We leverage data-driven strategies to maximize your ROI.",
     lottieSrc: "../SVG/DigitalMarketing.json",
     features: [
+      "Digital Marketing",
       "SEO optimization",
       "Social media marketing",
       "Content marketing",
@@ -51,6 +54,7 @@ const servicesData = {
     description: "We develop bespoke software solutions designed specifically for your business requirements. Our custom software helps streamline operations, improve efficiency, and provide competitive advantages.",
     lottieSrc: "../SVG/CustomSoftwareSolutions.json",
     features: [
+      "Custom Software Solutions",
       "Enterprise software development",
       "Workflow automation",
       "CRM & ERP systems",
@@ -64,9 +68,10 @@ const servicesData = {
     title: "AI Chatbot Development",
     tagline: "Intelligent automation for better customer engagement",
     description: "We build advanced AI-powered chatbots that enhance customer service, automate responses, and provide 24/7 support. Our chatbots integrate seamlessly with your existing systems.",
-    // image: "../img/services/chatbot.png", // <-- Added image path
+    // image: "../img/services/chatbot.png",
     lottieSrc: "../SVG/chatboat.json",
     features: [
+      "AI Chatbot Development",
       "Natural Language Processing (NLP)",
       "Multi-platform integration",
       "Sentiment analysis",
@@ -77,12 +82,13 @@ const servicesData = {
     ]
   },
   itconsulting: {
-    title: "IT Consultancy & Outsourcing",
-    tagline: "Expert guidance for your technology needs",
-    description: "Our IT consulting services help you make informed technology decisions, while our outsourcing solutions provide access to top-tier talent without the overhead of in-house teams.",
-    // image: "../img/services/it_consulting.png", // <-- Added image path
+    title: "Data Analytics & Business Intelligence",
+    tagline: "Unlock insights and drive smarter decisions",
+    description: "Our data analytics and business intelligence services empower you to turn raw data into actionable insights. We help you visualize trends, optimize operations, and make data-driven decisions that accelerate business growth.",
+    // image: "../img/services/it_consulting.png",
     lottieSrc: "../SVG/IT_Consultancy.json",
     features: [
+      "Data Analytics & Business Intelligence",
       "Technology strategy development",
       "Infrastructure planning",
       "Security audits",
