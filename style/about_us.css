@@ -328,6 +328,7 @@ body {
 
 .wcu-feature-card p {
     color: white;
+    text-align: justify;
 }
 
 /* Animation final state (triggered by JS) */

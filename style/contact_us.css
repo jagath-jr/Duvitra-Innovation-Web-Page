@@ -316,9 +316,9 @@ height: auto;
     }
 
     .form-section-unique {
-        max-width: 100%;
-        width: 90%;
-        margin: 0 auto;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto 1rem auto;
     }
 }
 

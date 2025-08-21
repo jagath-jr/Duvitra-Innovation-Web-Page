@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 32px;
-  height: 120px;
+  height: 5rem;
   padding: 0 2rem; /* Added padding for spacing on all screens */
 }
 .header-container {

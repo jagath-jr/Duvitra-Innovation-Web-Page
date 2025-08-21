@@ -3,7 +3,7 @@ const servicesData = {
   webdev: {
     title: "Website & Mobile App Development",
     tagline: "Build digital experiences that engage and convert",
-    description: "We specialize in creating responsive websites and high-performance mobile applications that deliver exceptional user experiences. Our development process combines cutting-edge technologies with industry best practices to ensure your digital product stands out in today's competitive market.",
+    description: "Boost your business with our expert website and mobile app development services. We deliver responsive, high-performance digital solutions tailored to your brand, using the latest technologies and best practices. Enhance user experience, increase engagement, and drive conversions with our custom web and mobile applications.",
     lottieSrc: "../SVG/WebsiteDev.json",
     features: [
       "Website & Mobile App Development",
@@ -19,7 +19,7 @@ const servicesData = {
   uiux: {
     title: "UI/UX & Marketing Materials Design",
     tagline: "Designs that captivate and communicate",
-    description: "Our design team creates visually stunning and highly functional user interfaces that enhance user engagement and satisfaction. We also develop compelling marketing materials that effectively communicate your brand message and value proposition.",
+    description: "Elevate your brand with our professional UI/UX design and marketing materials services. We create visually appealing, user-friendly interfaces and impactful marketing collateral that improve engagement and communicate your message effectively. Stand out online and offline with our design expertise.",
     lottieSrc: "../SVG/UIUX Designer.json",
     features: [
       "UI/UX & Marketing Materials Design",
@@ -35,7 +35,7 @@ const servicesData = {
   marketing: {
     title: "Digital Marketing",
     tagline: "Grow your online presence and reach",
-    description: "Our comprehensive digital marketing services help you establish a strong online presence, reach your target audience, and convert visitors into customers. We leverage data-driven strategies to maximize your ROI.",
+    description: "Accelerate your growth with our comprehensive digital marketing services. We use proven SEO, social media, content marketing, and PPC strategies to increase your online visibility, attract targeted traffic, and convert visitors into loyal customers. Maximize your ROI with data-driven marketing solutions.",
     lottieSrc: "../SVG/DigitalMarketing.json",
     features: [
       "Digital Marketing",
@@ -51,7 +51,7 @@ const servicesData = {
   software: {
     title: "Custom Software Solutions",
     tagline: "Tailored technology for your unique needs",
-    description: "We develop bespoke software solutions designed specifically for your business requirements. Our custom software helps streamline operations, improve efficiency, and provide competitive advantages.",
+    description: "Transform your business operations with our custom software development services. We design and build scalable, secure, and efficient software solutions that address your specific needs, streamline workflows, and give you a competitive edge in your industry.",
     lottieSrc: "../SVG/CustomSoftwareSolutions.json",
     features: [
       "Custom Software Solutions",
@@ -67,7 +67,7 @@ const servicesData = {
   chatbot: {
     title: "AI Chatbot Development",
     tagline: "Intelligent automation for better customer engagement",
-    description: "We build advanced AI-powered chatbots that enhance customer service, automate responses, and provide 24/7 support. Our chatbots integrate seamlessly with your existing systems.",
+    description: "Enhance customer support and automate interactions with our AI chatbot development services. Our chatbots use advanced natural language processing to provide instant, personalized responses, integrate with multiple platforms, and deliver 24/7 assistance for improved customer satisfaction.",
     // image: "../img/services/chatbot.png",
     lottieSrc: "../SVG/chatboat.json",
     features: [
@@ -84,7 +84,7 @@ const servicesData = {
   itconsulting: {
     title: "Data Analytics & Business Intelligence",
     tagline: "Unlock insights and drive smarter decisions",
-    description: "Our data analytics and business intelligence services empower you to turn raw data into actionable insights. We help you visualize trends, optimize operations, and make data-driven decisions that accelerate business growth.",
+    description: "Leverage your data for business growth with our data analytics and business intelligence services. We turn raw data into actionable insights, helping you visualize trends, optimize operations, and make informed, data-driven decisions for long-term success.",
     // image: "../img/services/it_consulting.png",
     lottieSrc: "../SVG/IT_Consultancy.json",
     features: [

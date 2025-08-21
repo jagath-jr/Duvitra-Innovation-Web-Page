@@ -1,5 +1,6 @@
 .hero {
     height: 110vh;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -182,7 +183,7 @@
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
-        margin-top:-12rem;
+        margin-top:-10rem;
     }
     
     .hero-subtitle {
@@ -192,7 +193,7 @@
     .hero-buttons {
         flex-direction: column;
         align-items: center;
-        margin-bottom: 60px;
+        margin-bottom: 7rem;
     }
     
     .stats-section {
@@ -409,6 +410,7 @@
     font-size: 1rem;
     color: #555;
     margin-bottom: 0;
+    text-align: justify;
 }
 
 /* Responsive Design: Media Query for tablets and desktops */
@@ -548,6 +550,7 @@
             font-size: 1rem; /* 16px */
             color: #555;
             margin-bottom: 30px;
+            text-align: justify;
         }
 
         .intro-image-container {
@@ -625,6 +628,7 @@
             font-size: 1rem; /* 16px */
             color: #555;
             margin-bottom: 0;
+            text-align: justify;
         }
 
         /*
@@ -875,6 +879,7 @@
     color: #555;
     margin-bottom: 1.5rem;
     flex-grow: 1; /* Allows quote to take up available space */
+    text-align: justify;
 }
 
 /* Star Rating Styles */
