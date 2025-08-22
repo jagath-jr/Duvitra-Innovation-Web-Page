@@ -24,6 +24,7 @@
 .icon-circle-unique {
     display: inline-flex; /* Use flex for centering icon */
     align-items: center;
+    margin-bottom: 1rem;
     justify-content: center;
     width: 60px; /* Fixed size for the circle */
     height: 60px;
