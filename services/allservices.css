@@ -30,8 +30,9 @@
    ====================== */
 #service-content {
   max-width: 1200px;
-  margin:12rem 0 auto;
+  margin:0 auto;
   padding: 1rem 5rem;
+  margin-top:12rem;
 }
 
 /* Service Details - Flex Layout */
