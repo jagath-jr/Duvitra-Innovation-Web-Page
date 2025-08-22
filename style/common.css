@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 32px;
-  height: 120px;
+  height: 5rem;
   padding: 0 2rem; /* Added padding for spacing on all screens */
 }
 .header-container {
@@ -19,7 +19,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: ;
+  /* background: white; */
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
 }
@@ -28,27 +28,33 @@ body {
   transform: translateY(-100%);
 }
 .navbar-logo {
-  height: 6rem;
-  width: auto;
+  height: 4rem;
+  width: 10rem; /* Adjust based on your logo's aspect ratio */
   display: block;
+  background-image: url('../img/Duvitra_Innovations_LOGO.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-
 .navbar {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.5); /* More transparent background */
+  backdrop-filter: blur(12px); /* This creates the glass effect */
+  -webkit-backdrop-filter: blur(12px); /* For Safari support */
   border-radius: 3rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5); /* Lighter shadow for better glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Optional subtle border */
+  
   display: flex;
   gap: 3rem;
-  padding: 0.2rem .8rem;
+  padding: 0.5rem .8rem;
   align-items: center;
 }
-
 .navbar a {
   text-decoration: none;
   color: #222;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  padding: 8px 20px;
+  padding: 0.5rem 0.625rem;
   border-radius: 24px;
   transition: background 0.2s, color 0.2s;
 }
@@ -67,7 +73,8 @@ body {
 }
 
 .navbar a:not(.contact):hover {
-  background: #f2f2f2;
+  background: linear-gradient(to bottom, #10e0a4, #00b4d8);
+  
 }
 
 /* Hide toggle button on desktop */
@@ -82,32 +89,21 @@ body {
     justify-content: space-between; /* Pushes logo and toggle to edges */
   }
 
-  .navbar {
+.navbar {
     position: absolute;
-    top: 120px; /* Position below the header */
+    top: 120px;
     left: 0;
     width: 100%;
-    flex-direction: column; /* Stack links vertically */
+    flex-direction: column;
     background: #fff;
     padding: 2rem 0;
     gap: 1.5rem;
-    
-    /* Modern Slide-in Effect */
-    transform: translateY(-150%);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-    /* Reset desktop styles */
-    border-radius: 0; 
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transform: translateY(-150%); /* GSAP uses this as the starting point */
+    border-radius: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-  }
-.navbar.hide-on-scroll {
-    transform: translateY(-150%) !important;
-  }
-  /* Active state for the mobile menu */
-  .navbar.active {
-    transform: translateY(0); /* Slide menu into view */
-  }
+}  /* Active state for the mobile menu */
+
 
   /* Style the hamburger toggle button */
   .navbar-toggle {
@@ -145,40 +141,48 @@ body {
 
 /*========Footer section=========*/
         /* General Footer Styling */
-        .site-footer {
-            background-color: #000;
-            color: #ffffff;
-            padding: 80px 0 0 0;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            height: 40rem;
-        }
+.site-footer {
+    background-color: #050505; /* Fallback color */
+    background-image: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)), 
+                     url('../img/sl_070722_51460_26.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    padding: 80px 0 0 0;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    height: 90vh;
+    z-index: 1; /* This is fine as the container */
+    max-width: 100vw;
+    margin: 0 auto;
+}
 
-        /* Faded Background Text */
-        .footer-background-text {
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(100px, 25vw, 400px);
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.2);
-            z-index: 1;
-        }
-
+/* Faded Background Text - Now on top layer */
+.footer-background-text {
+    position: absolute;
+    top: 70% !important;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    font-size: clamp(6.2rem, 25vw, 25rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.2);
+    z-index: 100; /* Increased to ensure it's on top */
+    pointer-events: none; /* Optional: prevents the text from blocking clicks */
+}
         /* Content Container */
         .site-footer .container {
-            max-width: 1200px;
+            max-width: 75rem;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.2rem;
             position: relative;
             z-index: 2;
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
+             display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.75rem, 1fr));
             gap: 40px;
             flex-wrap: wrap;
         }
@@ -191,11 +195,12 @@ body {
 
         /* Column 1: About & Social */
         .footer-about .footer-logo {
-            width: 70px;
-            height: 70px;
-            background-color: #fff;
-            border-radius: 50%;
-            margin-bottom: 24px;
+            width: 10rem;
+            height: 4rem;
+             background-image: url('../img/Duvitra_Innovations_LOGO.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
         }
 
         .footer-about .footer-tagline {
@@ -275,12 +280,17 @@ body {
             margin-top: 5px;
             color: #a0a0a0;
         }
+        .copyright {
+  color: #666;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
 
         /* --- Mobile Responsiveness (Updated) --- */
 
         @media (max-width: 768px) {
             .footer-background-text {
-                top: 90%;
+                top: 90% !important;
             }
 
             .site-footer {

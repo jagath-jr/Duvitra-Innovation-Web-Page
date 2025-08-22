@@ -1,0 +1,212 @@
+/* Hero Section */
+#webdev-hero {
+    background: url('../img/services/services bg.png') center/cover no-repeat;
+    padding: 100px 20px; /* Adjust vertical space inside hero */
+    text-align: center;
+    color: white;
+    position: relative;
+    margin-top: -8rem; /* Pull hero up behind header */
+    z-index: -1;
+}
+
+/* Add this for the overlay */
+#webdev-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    z-index: -1; /* Place it above the background but below text */
+}
+
+#webdev-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    position: relative; /* Ensure text stays above overlay */
+}
+
+#webdev-hero p {
+    font-size: 1.2rem;
+    position: relative; /* Ensure text stays above overlay */
+}
+
+/* Intro Section */
+#webdev-intro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2rem 6rem;
+    gap: 20px;
+}
+
+.intro-text {
+    flex: 1 1 50%;
+}
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+.intro-image {
+    flex: 1 1 40%;
+}
+
+.intro-image lottie-player {
+    max-width: 100%;
+    display: block;
+}
+
+/* Expertise Section */
+#webdev-expertise {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 1rem;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.expertise-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.expertise-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1 1 calc(26.333% - 20px); /* 3 per row */
+    max-width: 320px;
+   
+}
+/* .expertise-card img {
+    margin-bottom: 15px;
+} */
+
+/* Responsive */
+@media (max-width: 768px) {
+    #webdev-hero h1 {
+        font-size: 2rem;
+    }
+    #webdev-intro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2rem 4rem;
+    gap: 20px;
+    flex-direction: column;
+}
+
+}
+/* Make it responsive */
+@media (max-width: 900px) {
+    .expertise-card {
+        flex: 1 1 calc(50% - 20px); /* 2 per row */
+    }
+}
+
+@media (max-width: 600px) {
+    .expertise-card {
+        flex: 1 1 100%; /* 1 per row */
+    }
+}
+
+
+
+/* Homepage Service Cards with Clickable Areas */
+.expertise-card a {
+    display: block;
+    height: 100%;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    text-align: center; 
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Maintain existing card styling while making links clickable */
+.expertise-card .icon-container, 
+.expertise-card h3, 
+.expertise-card p {
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional: Add a subtle overlay on hover */
+.expertise-card a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(59, 130, 246, 0.05);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
+
+.expertise-card:hover a::after {
+    opacity: 1;
+}
+
+/* Maintain existing card layout */
+.expertise-card {
+    background-color: #f9f9f9;
+    border-radius: 1rem;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Styles for circular icon background */
+.icon-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--nnn, linear-gradient(180deg, rgba(0, 134, 233, 0.24) 0%, rgba(0, 236, 118, 0.18) 100%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem; 
+}
+
+.expertise-card img {
+    /* Flexbox in the parent handles alignment. No styles needed. */
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;  /* <-- Adjust this value */
+    height: 2.8rem; /* <-- Adjust this value */
+}
+
+.expertise-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1e3a8a;
+}
+
+.expertise-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}

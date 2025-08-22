@@ -1,252 +1,299 @@
-/* Hero Section Styles */
 .hero {
-    /* Creates the gradient background */
-    background: linear-gradient(to right, #a8e0d8, #54b4d3);
-    /* Ensures the section takes the full viewport height */
-    height: 100vh;
-    /* Flexbox for centering content */
+    height: 110vh;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #000;
     padding: 0 20px;
     position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     top:-8rem;
-    height: 40rem;
+}
+
+.lines-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 1;
+}
+
+.line {
+    flex-grow: 1;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ffffff, #008be5, #00C6A1, #008be5, #00C6A1, #ffffff);
+    background-size: 100% 400%;
+}
+
+.line::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(160, 153, 153, 0.5), rgba(160, 153, 153, 0.1));
+    z-index: 1;
+}
+
+.line::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2px;
+    height: var(--drop-height);
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, var(--opacity-peak)), transparent);
+    opacity: 0;
+    animation: slow-drop var(--drop-duration) infinite ease-in;
+    animation-delay: var(--animation-delay, 0ms);
+    filter: blur(0.4px);
+}
+
+@keyframes slow-drop {
+    0% { opacity: 0.2; transform: translateY(-100%); }
+    20% { opacity: var(--opacity-peak); }
+    100% { transform: translateY(100vh); opacity: var(--opacity-peak); }
 }
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: 150px;
 }
 
 .hero-title {
-    /* Styling for the main headline */
-    font-size: 3.5rem;
-    font-weight: bold;
+    font-size: 2.8rem;
+    font-weight: 700;
     margin-bottom: 1rem;
+    margin-top:-1rem;
 }
 
 .hero-subtitle {
-    /* Styling for the smaller text under the headline */
     font-size: 1.25rem;
     margin-bottom: 2rem;
+    opacity: 0.9;
 }
 
 .hero-buttons {
-    /* Flexbox for button alignment */
     display: flex;
     justify-content: center;
-    gap: 1rem; /* Space between buttons */
+    gap: 1rem;
+    /* margin-bottom: 80px; */
 }
 
-/* General Button Styles */
+.stats-section {
+    position: absolute;
+    top: 63%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4rem;
+    padding: 0 20px;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.stats-item {
+    position: relative;
+    padding-left: 20px;
+    max-width: 300px;
+}
+
+.stats-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 4px;
+    height: 90%;
+    background: linear-gradient(to bottom, #10e0a4, #00b4d8);
+    border-radius: 2px;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #fff;
+}
+
+.stat-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.stats-item p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
 .btn {
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.8rem;
     border-radius: 8px;
     font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    border: 1px solid transparent;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
-/* Primary Button Styles */
 .btn-primary {
     background-color: #000;
     color: #fff;
+    border-color: #000;
 }
 
 .btn-primary:hover {
     background-color: #333;
+    transform: translateY(-2px);
 }
 
-/* Secondary Button Styles */
 .btn-secondary {
-    background-color: transparent;
-    color: #000;
-    border: 1px solid #000;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 2px solid #fff;
+    backdrop-filter: blur(5px);
 }
 
 .btn-secondary:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
+        margin-top:-10rem;
     }
-
+    
     .hero-subtitle {
         font-size: 1rem;
     }
-
+    
     .hero-buttons {
-        flex-direction: column; /* Stacks buttons on smaller screens */
+        flex-direction: column;
         align-items: center;
+        margin-bottom: 7rem;
+    }
+    
+    .stats-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        bottom: 20px;
     }
 
-    .btn {
-        width: 100%;
-        max-width: 300px; /* Prevents buttons from being too wide */
+    .stats-item {
+        max-width: 150px;
+        padding-left: 15px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-title {
+        font-size: 1rem;
+    }
+
+    .stats-item p {
+        font-size: 0.875rem;
     }
 }
- /*========Stats Section Styling ==========*/
-        .stats-section {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 4rem; /* Space between the items */
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto; /* Center the section */
-            color: #000;
-            text-align: left;
-        }
 
-        .stats-item {
-            position: relative; /* Needed for the pseudo-element line */
-            padding-left: 20px; /* Space for the decorative line */
-            max-width: 300px; /* Max width for each item */
-        }
+@media (max-width: 480px) {
+    .hero-content {
+        padding-bottom: 1rem;
+    }
+    
+    .stats-section {
+        gap: 1rem;
+        bottom: 9rem;
+    }
 
-        /* The decorative vertical line with a gradient */
-        .stats-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 4px;
-            height: 90%; /* Adjust height as needed */
-            background: linear-gradient(to bottom, #10e0a4, #00b4d8);
-            border-radius: 2px;
-        }
+    .stats-item {
+        max-width: 120px;
+        padding-left: 12px;
+    }
 
-        .stat-number {
-            font-size: 3.5rem; /* e.g., 56px */
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
+    .stat-number {
+        font-size: 1.75rem;
+    }
 
-        .stat-title {
-            font-size: 1.125rem; /* e.g., 18px */
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
+    .stat-title {
+        font-size: 0.875rem;
+    }
 
-        .stats-item p {
-            font-size: 1rem; /* e.g., 16px */
-            color: #555;
-            line-height: 1.6;
-        }
-
-        /* --- Responsive Adjustments --- */
-        @media (max-width: 768px) {
-            .stats-section {
-                flex-direction: row; /* Keep horizontal layout */
-                flex-wrap: wrap; /* Allow items to wrap if needed */
-                gap: 1.5rem; /* Reduce gap between items */
-                padding: 40px 20px; /* Reduce padding */
-                justify-content: space-around; /* Better spacing for mobile */
-            }
-
-            .stats-item {
-                max-width: 150px; /* Reduce max width */
-                padding-left: 15px; /* Adjust padding */
-            }
-
-            .stats-item::before {
-                height: 85%; /* Adjust line height */
-            }
-
-            .stat-number {
-                font-size: 2rem; /* Reduce number size */
-            }
-
-            .stat-title {
-                font-size: 1rem; /* Reduce title size */
-                margin-bottom: 0.5rem;
-            }
-
-            .stats-item p {
-                font-size: 0.875rem; /* Reduce paragraph text size */
-                line-height: 1.5;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-section {
-                gap: 1rem; /* Further reduce gap */
-                padding: 30px 15px;
-            }
-
-            .stats-item {
-                max-width: 120px; /* More compact */
-                padding-left: 12px;
-            }
-
-            .stat-number {
-                font-size: 1.75rem;
-            }
-
-            .stat-title {
-                font-size: 0.875rem;
-            }
-
-            .stats-item p {
-                font-size: 0.75rem;
-            }
-        }
+    .stats-item p {
+        font-size: 0.75rem;
+    }
+}
 
 /*========About Us Section========*/
+
         .about-section {
             display: flex;
             align-items: center;
-            gap: 4rem; /* Adjust space between image and text */
+            gap: 4rem;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 0.2rem;
-            color: #000;
+            margin: -8rem auto;
+            padding: 1rem;
         }
 
         .about-image-container {
-            flex-basis: 50%; /* Image takes up half the space */
-            border-radius: 16px; /* Rounded corners for the image */
-            overflow: hidden; /* Ensures the image respects the border-radius */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            width: 85%;
+            flex-basis: 50%;
+            min-width: 300px; /* Prevents the animation from getting too small */
         }
 
-        .about-image-container img {
+        /* Style the div container for the Lottie animation */
+        #lottie-animation-container {
             width: 100%;
             height: auto;
-            display: block;
+            aspect-ratio: 1 / 1; /* Ensures the container maintains a square shape */
         }
 
         .about-content {
-            flex-basis: 50%; /* Text takes up the other half */
+            flex-basis: 50%;
             margin: 0 1rem;
         }
 
+        /* --- Text and Button Styling --- */
         .about-heading {
             font-size: 3rem;
             font-weight: 600;
             text-transform: uppercase;
-            color: #000000;
-            letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
         }
 
         .about-subheading {
-            font-size: 2rem; /* 36px */
+            font-size: 2rem;
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1.5rem;
         }
 
         .about-description {
-            font-size: 1.125rem; /* 18px */
+            font-size: 1.125rem;
             color: #555;
             line-height: 1.7;
             margin-bottom: 2rem;
@@ -258,31 +305,41 @@
             background-color: #111;
             color: #fff;
             padding: 14px 28px;
-            border-radius: 25px; /* Pill-shaped button */
+            border-radius: 50px; /* Pill shape */
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.2s ease-out;
+            transition: transform 0.2s ease-out, background-color 0.2s ease;
         }
 
         .btn-dark:hover {
             transform: scale(1.05);
+            background-color: #333;
         }
 
-        /* --- Responsive Adjustments for About Section --- */
+        /* --- Responsive Adjustments --- */
         @media (max-width: 992px) {
             .about-section {
-                flex-direction: column; /* Stack image and text vertically */
+                flex-direction: column;
                 text-align: center;
+                gap: 2rem;
             }
         }
+
+        /* --- Animation Pre-Styling --- */
+        .animate-text {
+            opacity: 0;
+        }
+
+
+
 
 /* Main content container */
 .main-content_what-we-offer-a1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4rem 1.5rem; /* Vertical and horizontal padding */
-    min-height: 80vh; /* Ensure it takes up a good portion of the screen */
+    padding: 7rem 1.5rem 1rem 1.5rem;
+    min-height: 50vh; /* Ensure it takes up a good portion of the screen */
 }
 
 .offerings-section_what-we-offer-a1 {
@@ -318,7 +375,7 @@
 }
 
 .section-title_what-we-offer-a1 {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -353,6 +410,7 @@
     font-size: 1rem;
     color: #555;
     margin-bottom: 0;
+    text-align: justify;
 }
 
 /* Responsive Design: Media Query for tablets and desktops */
@@ -421,45 +479,34 @@
     align-items: center;
     gap: 4rem;
     width: max-content; /* Important for infinite effect */
-    animation: slide-2025 35s linear infinite;
-    will-change: transform; /* Optimizes for animation performance */
+    /* REMOVED: The 'animation' property is no longer needed */
+    /* REMOVED: The 'will-change' property is handled well by GSAP */
 }
 
 /* * =====================================================================
  * Logo Images
  * ===================================================================== */
 .logos-slide-2025 img {
-    height: 40px;
+    height: 6em;
     width: auto;
     flex-shrink: 0; /* Prevents logos from shrinking */
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: filter 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+    /* transition: opacity 0.3s ease; Simplified transition */
 }
 
 /* * =====================================================================
  * Hover Effects
  * ===================================================================== */
-.logo-slider-2025:hover .logos-slide-2025 {
-    animation-play-state: paused;
-}
+/* REMOVED: Pausing is now handled by JavaScript/GSAP */
 
-.logos-slide-2025 img:hover {
-    filter: grayscale(0%);
+/* .logos-slide-2025 img:hover {
     opacity: 1;
-}
+} */
 
 /* * =====================================================================
- * Keyframe Animation - Updated for seamless looping
+ * Keyframe Animation
  * ===================================================================== */
-@keyframes slide-2025 {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%); /* Only translate half way since we duplicated content */
-    }
-}
+/* REMOVED: @keyframes are no longer needed */
 
 /* * =====================================================================
  * Responsive Design
@@ -469,134 +516,159 @@
         gap: 2rem;
     }
     .logos-slide-2025 img {
-        height: 30px;
+        height: 4rem;
     }
 }
-
-/* Container to center content and set a max-width */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 /*
 --- Services Section Styling ---
 */
-.services-section {
-    padding: 60px 0; /* Vertical padding for the section */
-}
 
-/* Grid layout for the two columns */
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 50px; /* Space between the columns */
-    align-items: start; /* Align items to the top */
-}
+ .services-section {
+            padding: 60px 0;
+            background-color: #fff;
+            position: relative;
+            z-index: 1;
+            top: -1rem;
+        }
 
-/* Left Column: Introduction */
-.service-intro .section-title {
-    font-size: 2.5rem; /* 40px */
-    font-weight: 700;
-    margin-bottom: 20px;
-}
+        /* Grid layout for the two columns */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 50px; /* Space between the columns */
+            align-items: start; /* Align items to the top */
+        }
 
-.service-intro .section-description {
-    font-size: 1rem; /* 16px */
-    color: #555;
-    margin-bottom: 30px;
-}
+        /* Left Column: Introduction */
+        .service-intro .section-title {
+            font-size: 2.5rem; /* 40px */
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
-.intro-image-container {
-    width: 100%;
-}
+        .service-intro .section-description {
+            font-size: 1rem; /* 16px */
+            color: #555;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
 
-.intro-image {
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
+        .intro-image-container {
+            width: 100%;
+        }
 
+        /* Right Column: Service List */
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Space between service items */
+            padding-top: 1.5rem; /* Align content slightly better with the title */
+        }
 
-/* Right Column: Service List */
-.service-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Space between service items */
-    padding-top: 10px; /* Align content slightly better with the title */
-}
+        /*
+        --- Card Flip Styling ---
+        */
 
-.service-item {
-    padding: 3.3rem;
-    border: 1px solid #e0e0e0; /* Light border */
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        /* Service item now acts as a 3D container */
+        .service-item {
+            perspective: 1000px; /* Creates the 3D space */
+            background-color: transparent; /* Remove background from the container */
+            border: none;
+            height: 12rem;
+        }
 
-.service-item:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Enhanced shadow on hover */
-}
+        /* The inner element that will be flipped */
+        .service-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer; /* Shows it's clickable */
+        }
 
-.service-item .service-title {
-    font-size: 1.5rem; /* 24px */
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
+        /* Shared styles for both front and back faces */
+        .service-card-front,
+        .service-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* For Safari */
+            backface-visibility: hidden; /* Hides the back of the element when flipped */
 
-.service-item .service-description {
-    font-size: 1rem; /* 16px */
-    color: #555;
-    margin-bottom: 0;
-}
+            /* Re-apply original item styles here */
+            padding: 2.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box; /* Ensures padding doesn't affect width/height */
+        }
 
+        /* Prevent text selection when clicking */
+        .service-card-front, 
+        .service-card-back {
+            user-select: none;
+            -webkit-user-select: none;
+        }
 
-/*
---- Responsive Design ---
-*/
+        /* Position the back face behind the front face */
+        .service-card-back {
+            transform: rotateX(180deg);
+        }
 
-/* For tablets and smaller desktops */
-@media (max-width: 992px) {
-    .services-grid {
-        gap: 30px;
-    }
+        .service-item .service-title {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
 
-    .service-intro .section-title {
-        font-size: 2rem;
-    }
+        .service-item .service-description {
+            font-size: 1rem; /* 16px */
+            color: #555;
+            margin-bottom: 0;
+            text-align: justify;
+        }
 
-    .service-item .service-title {
-        font-size: 1.25rem;
-    }
-}
+        /*
+        --- Responsive Design ---
+        */
 
+        /* For tablets and smaller desktops */
+        @media (max-width: 992px) {
+            .services-grid {
+                gap: 30px;
+            }
 
-/* For mobile devices */
-@media (max-width: 768px) {
-    .services-grid {
-        /* Stack the columns on top of each other */
-        grid-template-columns: 1fr;
-    }
+            .service-intro .section-title {
+                font-size: 2rem;
+            }
 
-    .service-list {
-        padding-top: 0; /* Remove top padding on mobile */
-    }
+            .service-item .service-title {
+                font-size: 1.25rem;
+            }
+        }
 
-    .service-intro .section-title {
-        text-align: center;
-    }
+        /* For mobile devices */
+        @media (max-width: 768px) {
+            .services-grid {
+                /* Stack the columns on top of each other */
+                grid-template-columns: 1fr;
+            }
 
-    .service-intro .section-description {
-        text-align: center;
-    }
-}
+            .service-list {
+                padding-top: 0; /* Remove top padding on mobile */
+            }
 
-
-
+            .service-intro .section-title,
+            .service-intro .section-description {
+                text-align: center;
+            }
+            .service-item {
+                min-height: 10rem; /* Ensure consistent touch area */
+            }
+        }
 /* --- Container for consistent centering and padding --- */
 .container {
     width: 90%;
@@ -633,7 +705,7 @@
 .product-cards-container {
     display: grid;
     /* Create 3 columns on desktop, 2 on tablet, and 1 on mobile */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
     gap: 30px; /* Space between cards */
 }
 
@@ -761,6 +833,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+    margin-top: 5rem;
 }
 
 .section-header p {
@@ -772,7 +845,7 @@
 /* Testimonials Grid Layout */
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12.75rem, 1fr));
     gap: 2rem;
 }
 
@@ -806,6 +879,8 @@
     color: #555;
     margin-bottom: 1.5rem;
     flex-grow: 1; /* Allows quote to take up available space */
+    text-align: justify;
+    font-style: italic;
 }
 
 /* Star Rating Styles */

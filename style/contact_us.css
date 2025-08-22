@@ -1,49 +1,182 @@
 /* Main container for the two sections */
 * {
-  margin: 0;
+  margin: 0 ;
   padding: 0;
-  box-sizing: border-box;
+
 }
+
+/* Main Content Section */
+.main-content-unique {
+    padding: 2rem 1rem; /* Default padding for mobile */
+    max-width: 1400px; /* Max width for the entire content */
+    margin: 0 auto; /* Center the content */
+}
+
+/* Contact Us Heading */
+.contact-us-heading-unique {
+    color: #2c3e50; /* Darker text for heading */
+    margin-bottom: 3rem; /* More space below the heading */
+    font-size: 2.5rem; 
+    text-align: center; /* Center align text */
+}
+
+/* Icon Circle Styling */
+.icon-circle-unique {
+    display: inline-flex; /* Use flex for centering icon */
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: center;
+    width: 60px; /* Fixed size for the circle */
+    height: 60px;
+    border-radius: 50%; /* Make it perfectly circular */
+    background-color: #b6e8ff; /* Light green background */
+    color: #1a66c9; /* Green icon color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.icon-circle-unique i {
+    font-size: 1.8rem; /* Icon size */
+}
+
+/* Card Base Styling (Address and Contact Detail Cards) */
+.address-card-unique,
+.contact-detail-card-unique {
+    background-color: #ffffff;
+    border-radius: 12px; /* Rounded corners */
+    padding: 2.5rem; /* Ample padding */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* More prominent shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover */
+}
+
+/* Card Hover Effect */
+.address-card-unique:hover,
+.contact-detail-card-unique:hover {
+    transform: translateY(-8px); /* Lift card on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.address-card-unique:hover .icon-circle-unique,
+.contact-detail-card-unique:hover .icon-circle-unique {
+    transform: scale(1.1); /* Slightly enlarge icon on card hover */
+}
+
+/* Text inside cards */
+.address-card-unique h2,
+.contact-detail-card-unique h2 {
+    font-size: 1.5rem; /* Larger headings for cards */
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+}
+
+.address-card-unique p,
+.contact-detail-card-unique p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+/* Specific container layouts using Flexbox/Grid for responsiveness */
+
+/* Address Cards Container */
+.address-cards-container-unique {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 1.5rem; /* Gap between cards */
+    margin-bottom: 3rem; /* Space below this section */
+}
+
+/* Contact Details Container */
+.contact-details-container-unique {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 1.5rem; /* Gap between cards */
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets (md breakpoint - typical 768px and up) */
+@media (min-width: 768px) {
+    .main-content-unique {
+        padding: 3rem 2rem;
+    }
+
+    .contact-us-heading-unique {
+        font-size: 3rem;
+    }
+
+    .address-cards-container-unique {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+        gap: 2rem;
+    }
+
+    .contact-details-container-unique {
+        grid-template-columns: repeat(2, 1fr); /* Three columns on tablets */
+        gap: 2rem;
+    }
+}
+
+/* Desktops (lg breakpoint - typical 1024px and up) */
+@media (min-width: 1024px) {
+    .main-content-unique {
+        padding: 4rem 4rem;
+    }
+
+    .contact-us-heading-unique {
+        font-size: 3.5rem;
+    }
+
+    /* Cards maintain their multi-column layout on desktop */
+}
+
+
+/*===========''''''';;;;;;'''''========*/
 .main-container-unique {
     display: flex;
     gap: 2rem;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
     align-items: flex-start; /* Align items to the top */
 }
 
 /* Left Content Section */
 .content-section-unique {
-    flex: 1;
-    padding-right: 2rem;
+flex: 1;
+padding-right: 2rem;
 }
 
 .content-section-unique h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: #1a1a1a;
+ font-size: 2.8rem;
+font-weight: 700;
+line-height: 1.2;
+margin-bottom: 1.5rem;
+color: #1a1a1a;
 }
 
 .content-section-unique .subtitle-unique {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #555;
+font-size: 1.1rem;
+margin-bottom: 1.5rem;
+color: #555;
+text-align: justify;
+padding: 1rem;
 }
 
 .content-section-unique .description-unique {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    color: #555;
+font-size: 1rem;
+margin-bottom: 2rem;
+color: #555;
+padding:1rem
 }
 
-.illustration-unique img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+.illustration-unique lottie-player {
+max-width: 100%;
+height: auto;
 }
-
 /* Right Form Section */
 .form-section-unique {
     flex: 1;
@@ -184,8 +317,9 @@
     }
 
     .form-section-unique {
-        max-width: 100%;
         width: 100%;
+        max-width: 500px;
+        margin: 0 auto 1rem auto;
     }
 }
 
