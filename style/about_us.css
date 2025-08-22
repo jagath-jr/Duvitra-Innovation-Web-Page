@@ -81,7 +81,7 @@ body {
 }
 /* Full Service Section */
 .full-service {
-    padding: 1rem;
+    padding: 3rem;
     text-align: justify;
     background-color: white;
 }
@@ -92,7 +92,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     color: #555;
-    max-width: 65rem;
+    max-width: 73rem;
 }
 
 /* Responsive Design */
