@@ -6,8 +6,8 @@ window.addEventListener('load', function() {
     // Cache all selectors at once
     const elements = {
         servicesSection: document.querySelector(".services-section"),
-        serviceItems: gsap.utils.toArray(".service-item"),
-        serviceCards: gsap.utils.toArray(".service-item .service-card-inner"),
+        // ✅ Selector for the individual card faces (front and back)
+        serviceCardFaces: gsap.utils.toArray(".service-card-front, .service-card-back"),
         statsSection: document.getElementById('statsSection'),
         lottieContainer: document.getElementById('lottie-animation-container'),
         darkButton: document.querySelector('.btn-dark'),
@@ -35,7 +35,7 @@ window.addEventListener('load', function() {
 
     // ========== Services Section Animations ==========
     function setupServicesAnimations() {
-        if (!elements.servicesSection || !elements.serviceCards.length) return;
+        if (!elements.servicesSection) return;
 
         if (elements.lottiePlayer) elements.lottiePlayer.pause();
 
@@ -47,9 +47,9 @@ window.addEventListener('load', function() {
             onEnter: () => elements.lottiePlayer && elements.lottiePlayer.play(),
             onLeaveBack: () => elements.lottiePlayer && elements.lottiePlayer.stop()
         });
-
-        setupCardInteractions();
-        setupUniversalScrollFlipAnimation();
+        
+        // ✅ Call the new, non-flipping animation function
+        setupStaticCardAnimation();
 
         gsap.from("#service-lottie", {
             opacity: 0,
@@ -64,93 +64,32 @@ window.addEventListener('load', function() {
         });
     }
 
-    // ✅ UPDATED FUNCTION
-    function setupUniversalScrollFlipAnimation() {
-        setupHoverEffects();
+    // ✅ NEW, SIMPLIFIED FUNCTION
+    // This creates a simple entrance animation for each static card face.
+    function setupStaticCardAnimation() {
+        if (!elements.serviceCardFaces.length) return;
 
-        const cardHeight = elements.serviceCards[0]?.offsetHeight || 0;
-        if (cardHeight === 0) {
-            console.warn("Service card height is 0, animation might not work correctly.");
-            return;
-        }
-        // Increased scroll distance slightly to give each animation more room
-        const scrollDistance = cardHeight * elements.serviceCards.length * 1.2;
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: elements.servicesSection,
-                start: "top top",
-                end: `+=${scrollDistance}`,
-                scrub: 1,
-                pin: true,
-                pinSpacing: true,
-                id: "services-pin",
-                anticipatePin: 1
-            }
-        });
-        
-        // **FIXED LOGIC**
-        // The position parameter has been removed from the .to() method.
-        // This makes GSAP add each animation to the end of the timeline,
-        // ensuring they play sequentially without any overlap.
-        elements.serviceCards.forEach((card) => {
-            tl.to(card, {
-                rotationX: 180,
-                duration: 1,
-                ease: "power2.inOut"
-            });
-        });
-    }
-
-    function setupCardInteractions() {
-        elements.serviceCards.forEach(card => {
-            card.addEventListener("click", (e) => {
-                e.stopPropagation();
-                flipCard(card, true);
-            });
-            card.addEventListener("touchend", (e) => {
-                e.preventDefault();
-                flipCard(card, true);
-            }, { passive: false });
-            card.addEventListener("keydown", (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    flipCard(card, true);
+        elements.serviceCardFaces.forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 0.6,
+                delay: i * 0.1, // Staggered delay for each card
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
                 }
             });
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-expanded', 'false');
         });
     }
 
-    function setupHoverEffects() {
-        elements.serviceItems.forEach(item => {
-            item.addEventListener("mouseenter", () => {
-                if ('ontouchstart' in window) return;
-                gsap.to(item, { scale: 1.03, duration: 0.3, ease: "power2.out" });
-            });
-            item.addEventListener("mouseleave", () => {
-                if ('ontouchstart' in window) return;
-                gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
-            });
-        });
-    }
-    
-    function flipCard(cardInner, isManualFlip = true) {
-        const currentRotation = gsap.getProperty(cardInner, "rotationX");
-        const targetRotation = currentRotation === 0 ? 180 : 0;
-
-        gsap.to(cardInner, {
-            rotationX: targetRotation,
-            duration: isManualFlip ? 0.6 : 1,
-            ease: isManualFlip ? "back.out(1.7)" : "power2.inOut",
-            onComplete: () => {
-                cardInner.setAttribute('aria-expanded', targetRotation === 180);
-            },
-            overwrite: 'auto'
-        });
-    }
+    // ❌ REMOVED: The following functions related to flipping are no longer needed:
+    // - setupUniversalScrollFlipAnimation
+    // - setupCardInteractions
+    // - setupHoverEffects (if you want hover effects, you can add this back)
+    // - flipCard
 
     // ========== Counter Animation ==========
     function setupCounters() {
