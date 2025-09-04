@@ -152,6 +152,7 @@
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 700;
+    text-decoration: none;
     cursor: pointer;
     border: 2px solid transparent;
     transition: all 0.3s ease;
@@ -279,14 +280,14 @@
 
         /* --- Text and Button Styling --- */
         .about-heading {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
 
         .about-subheading {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1.5rem;
@@ -375,7 +376,7 @@
 }
 
 .section-title_what-we-offer-a1 {
-    font-size: 1.9rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -830,7 +831,7 @@
 
 /* Section Header Styles */
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     margin-top: 5rem;
@@ -907,7 +908,7 @@
 .author-info .author-company {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #333;
     margin-top: 0.5rem;
 }
