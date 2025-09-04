@@ -2,19 +2,14 @@
 // For now, it is empty as the current design section does not require it.
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('The About Us page has loaded.');
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
 
     /**
-     * Animates a number counting up from a start value to an end value.
+     * Animates a number counting from a start value to an end value.
      * @param {HTMLElement} element - The HTML element whose text will be updated.
      * @param {number} start - The starting number.
      * @param {number} end - The final number.
      * @param {number} duration - The duration of the animation in milliseconds.
-     * @param {string} finalText - The original text to display at the end (e.g., "40+", "98%").
+     * @param {string} finalText - The original text to display at the end (e.g., "10+", "70+").
      */
     const animateNumber = (element, start, end, duration, finalText) => {
         let startTime = null;
@@ -32,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             } else {
-                // Once complete, set the final text to include any original characters like '+' or '%'
+                // Once complete, set the final text to include any original characters like '+'
                 element.innerText = finalText;
             }
         };
@@ -68,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (!isNaN(targetNumber)) {
                         // Start the number increment animation
-                        animateNumber(statElement, 0, targetNumber, 2000, finalText);
+                        animateNumber(statElement, 0, targetNumber, 1000, finalText);
                     }
                 }
                 
