@@ -143,17 +143,17 @@ body {
         /* General Footer Styling */
 .site-footer {
     background-color: #050505; /* Fallback color */
-    background-image: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)), 
+    background-image: linear-gradient(rgb(241, 249, 253,0.8), rgba(244, 254, 250, 0.8)), 
                      url('../img/sl_070722_51460_26.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #ffffff;
+    color: #030303;
     padding: 80px 0 0 0;
     position: relative;
     overflow: hidden;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    height: 90vh;
+    
     z-index: 1; /* This is fine as the container */
     max-width: 100vw;
     margin: 0 auto;
@@ -167,7 +167,7 @@ body {
     transform: translate(-50%, -50%) !important;
     font-size: clamp(6.2rem, 25vw, 25rem);
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(0, 0, 0, 0.2);
     z-index: 100; /* Increased to ensure it's on top */
     pointer-events: none; /* Optional: prevents the text from blocking clicks */
 }
@@ -204,7 +204,7 @@ body {
         }
 
         .footer-about .footer-tagline {
-            font-size: 16px;
+            font-size: 1rem;
             line-height: 1.6;
             margin: 0 0 24px 0;
         }
@@ -220,27 +220,27 @@ body {
             justify-content: center;
             width: 40px;
             height: 40px;
-            border: 1.5px solid #fff;
+            border: 1.5px solid #000000;
             border-radius: 50%;
-            color: #fff;
-            font-size: 16px;
+            color: #0c0c0c;
+            font-size: 1rem;
             text-decoration: none;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .social-icons a:hover {
-            background-color: #fff;
-            color: #000;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         /* Columns 2 & 3: Links & Contact */
         .footer-column h4 {
-            font-size: 14px;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 25px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #a0a0a0;
+            color: #000000;
         }
 
         .footer-links ul,
@@ -257,13 +257,13 @@ body {
 
         .footer-links a,
         .footer-contact a {
-            color: #fff;
+            color: #070707;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #cccccc;
+            color: #383838;
         }
 
         .footer-contact li {
@@ -278,12 +278,39 @@ body {
             font-size: 18px;
             flex-shrink: 0;
             margin-top: 5px;
-            color: #a0a0a0;
+            color: #050505;
         }
         .copyright {
   color: #666;
   margin-top: 2rem;
   font-size: 0.9rem;
+}
+.footer-bottom-unik {
+    background-color: rgba(244, 254, 250, 1);
+    padding: 20px 5% 30px;
+    border-top: 1px solid #363B46;
+    text-align: center;
+}
+
+.footer-social-icons-unik {
+    margin-bottom: 20px;
+}
+
+.footer-social-icons-unik a {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin: 0 12px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social-icons-unik a:hover {
+    transform: scale(1.2) translateY(-2px);
+    color: #cccccc;
+}
+
+.footer-copyright-unik p {
+    margin: 0;
+    font-size: 0.9rem;
 }
 
         /* --- Mobile Responsiveness (Updated) --- */

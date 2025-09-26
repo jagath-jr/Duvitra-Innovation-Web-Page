@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ...scrollTriggerDefaults,
             trigger: siteFooter,
             start: "top 80%",
-            end: "bottom +=200"
+           toggleActions: "play none none none"
           }
         }
       );
@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ...scrollTriggerDefaults,
             trigger: column,
             start: "top 90%",
-            end: "bottom +=100"
+           toggleActions: "play none none none"
           }
         }
       );
@@ -356,30 +356,29 @@ document.addEventListener("DOMContentLoaded", () => {
             ...scrollTriggerDefaults,
             trigger: footerLogo,
             start: "top 90%",
-            end: "bottom +=50"
+            toggleActions: "play none none none"
           }
         }
       );
     }
 
     // --- 4. Staggered Fade In for Social Icons ---
-    if (socialIconsContainer && socialIcons.length) {
-      gsap.fromTo(socialIcons,
+   if (socialIconsContainer && socialIcons.length) {
+    gsap.fromTo(socialIcons,
         { opacity: 0, y: 40 },
         {
-          opacity: 1,
-          y: 0,
-          duration: 2,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            ...scrollTriggerDefaults,
-            trigger: socialIconsContainer,
-            start: "top 90%",
-            end: "bottom +=50"
-          }
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: socialIconsContainer,
+                start: "top 90%", // A more common start position
+                toggleActions: "play none none reverse"
+            }
         }
-      );
+    );
     }
   };
   const footerContainer = document.getElementById('common-footer');
