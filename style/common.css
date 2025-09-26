@@ -142,9 +142,8 @@ body {
 /*========Footer section=========*/
         /* General Footer Styling */
 .site-footer {
-    background-color: #050505; /* Fallback color */
-    background-image: linear-gradient(rgb(241, 249, 253,0.8), rgba(244, 254, 250,0.8)), 
-                     url('../img/sl_070722_51460_26.jpg');
+     /* Fallback color */
+    background-image: linear-gradient(rgba(233, 255, 251, 0.8), rgba(244, 254, 250,0.8));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -322,7 +321,7 @@ body {
 
             .site-footer {
                 padding: 60px 0 0 0;
-                height: 60rem;
+               
             }
 
             .site-footer .container {
