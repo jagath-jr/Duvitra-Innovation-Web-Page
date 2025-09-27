@@ -96,14 +96,14 @@ body {
     width: 100%;
     flex-direction: column;
     background: #fff;
-    padding: 2rem 0;
+    padding: 2rem; /* Adjusted padding for better spacing */
     gap: 1.5rem;
-    transform: translateY(-150%); /* GSAP uses this as the starting point */
+    align-items: flex-start; /* Aligns items to the left */
+    transform: translateY(-150%);
     border-radius: 0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-}  /* Active state for the mobile menu */
-
+}
 
   /* Style the hamburger toggle button */
   .navbar-toggle {
