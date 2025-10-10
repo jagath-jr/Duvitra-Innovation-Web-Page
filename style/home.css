@@ -165,6 +165,7 @@
     cursor: pointer;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    width: 7rem;
 }
 
 .btn-primary {
