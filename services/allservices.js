@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Update the page with service data
   document.getElementById('service-title').textContent = service.title;
   document.getElementById('service-tagline').textContent = service.tagline;
-  document.getElementById('service-heading').textContent = service.title;
+  
   document.getElementById('service-full-description').textContent = service.description;
 
   const serviceImageElement = document.getElementById('service-main-image');
