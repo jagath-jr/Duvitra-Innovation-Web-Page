@@ -351,7 +351,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 7rem 1.5rem 1rem 1.5rem;
+    padding: 0rem 1.5rem 1rem 1.5rem;
     min-height: 50vh; /* Ensure it takes up a good portion of the screen */
 }
 

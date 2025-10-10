@@ -2,7 +2,7 @@
    SERVICE HERO SECTION
    ====================== */
 #service-hero {
-  background: var(--nnn, linear-gradient(180deg, rgba(0, 134, 233, 0.24) 0%, rgba(0, 236, 118, 0.18) 100%));
+  background: var(--nnn, linear-gradient(180deg, rgba(253, 177, 158, 1) 0%, rgba(255, 222, 158, 1) 100%));
   color: rgb(48, 9, 218);
   padding: 6rem 2rem;
   text-align: center;
@@ -145,8 +145,8 @@
   display: inline-block;
   width: 40px;
   height: 40px;
-  background: #3b82f6;
-  color: white;
+  background: linear-gradient(182deg, #FB6D53 1.77%, #FFB61D 97.77%);
+  color: rgb(0, 0, 0);
   border-radius: 50%;
   line-height: 40px;
   font-weight: bold;
@@ -221,7 +221,7 @@
 #service-cta {
   text-align: center;
   padding: 4rem 2rem;
-  background: var(--nnn, linear-gradient(180deg, rgba(0, 134, 233, 0.24) 0%, rgba(0, 236, 118, 0.18) 100%));
+  background: var(--nnn, linear-gradient(180deg, rgba(253, 177, 158, 1) 0%, rgba(255, 222, 158, 1) 100%));
   color: rgb(2, 2, 2);
 }
 
