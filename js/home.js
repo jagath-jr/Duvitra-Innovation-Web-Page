@@ -308,11 +308,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== Lines Animation ==========
+   // ========== Lines Animation ==========
     function setupLinesAnimation() {
         if (!elements.linesContainer) return;
         
-        const numberOfLines = 18;
+        // Check if the screen is mobile (you can adjust the 768px breakpoint)
+        const isMobile = window.innerWidth < 768;
+        
+        // Set the number of lines based on screen size
+        const numberOfLines = isMobile ? 8 : 18;
+
+        // Clear any existing lines to prevent duplication
+        elements.linesContainer.innerHTML = '';
 
         // Create document fragment for better performance
         const fragment = document.createDocumentFragment();

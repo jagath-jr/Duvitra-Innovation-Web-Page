@@ -1,3 +1,12 @@
+
+:root {
+    --primary-text-color: #111111;
+    --secondary-text-color: #555555;
+    --card-background-color: #fff7f5; /* A light pink/peach shade from the image */
+    --page-background-color: #ffffff;
+    --card-border-color: #ffeae3;
+}
+
 .hero {
     height: 110vh;
     
@@ -27,7 +36,7 @@
     height: 100%;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(to bottom, #ffffff, #008be5, #00C6A1, #008be5, #00C6A1, #ffffff);
+    background: linear-gradient(to bottom, #ffffff, #fdc8b9, #ffdc9f, #ffdfa1, #fdc8b9, #ffffff);
     background-size: 100% 400%;
 }
 
@@ -66,8 +75,8 @@
     max-width: 800px;
     position: relative;
     z-index: 2;
-    color: #fff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    color: #000000;
+    /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,8 +86,9 @@
 }
 
 .hero-title {
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2.5rem;
+    
     margin-bottom: 1rem;
     margin-top:-1rem;
 }
@@ -106,8 +116,8 @@
     align-items: flex-start;
     gap: 4rem;
     padding: 0 20px;
-    color: #fff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    color: #030303;
+    /* text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); */
 }
 
 .stats-item {
@@ -123,7 +133,7 @@
     top: 5px;
     width: 4px;
     height: 90%;
-    background: linear-gradient(to bottom, #10e0a4, #00b4d8);
+    background: linear-gradient(182deg, #FB6D53 1.77%, #FFB61D 97.77%);
     border-radius: 2px;
 }
 
@@ -131,19 +141,19 @@
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 0.25rem;
-    color: #fff;
+    color: #000000;
 }
 
 .stat-title {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #fff;
+    color: #000000;
 }
 
 .stats-item p {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
     line-height: 1.6;
 }
 
@@ -156,12 +166,14 @@
     cursor: pointer;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    width: 7rem;
 }
 
 .btn-primary {
     background-color: #000;
+     background-image: linear-gradient(182deg, #FB6D53 1.77%, #FFB61D 97.77%);
     color: #fff;
-    border-color: #000;
+    /* border-color: #000; */
 }
 
 .btn-primary:hover {
@@ -171,9 +183,11 @@
 
 .btn-secondary {
     background-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
+    color: #000000;
     border: 2px solid #fff;
     backdrop-filter: blur(5px);
+     border-color: #000;
+}
 }
 
 .btn-secondary:hover {
@@ -183,8 +197,8 @@
 
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.5rem;
-        margin-top:-10rem;
+        font-size: 2rem;
+        margin-top:-6rem;
     }
     
     .hero-subtitle {
@@ -339,7 +353,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 7rem 1.5rem 1rem 1.5rem;
+    padding: 0rem 1.5rem 1rem 1.5rem;
     min-height: 50vh; /* Ensure it takes up a good portion of the screen */
 }
 
@@ -520,9 +534,9 @@
         height: 4rem;
     }
 }
+ 
 /*
 --- Services Section Styling ---
-*/
 
  .services-section {
             padding: 60px 0;
@@ -532,23 +546,23 @@
             top: -1rem;
         }
 
-        /* Grid layout for the two columns */
+        
         .services-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two equal columns */
-            gap: 50px; /* Space between the columns */
-            align-items: start; /* Align items to the top */
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start; 
         }
 
-        /* Left Column: Introduction */
+    
         .service-intro .section-title {
-            font-size: 2.5rem; /* 40px */
+            font-size: 2.5rem; 
             font-weight: 700;
             margin-bottom: 20px;
         }
 
         .service-intro .section-description {
-            font-size: 1rem; /* 16px */
+            font-size: 1rem; 
             color: #555;
             margin-bottom: 30px;
             text-align: justify;
@@ -558,85 +572,79 @@
             width: 100%;
         }
 
-        /* Right Column: Service List */
+       
         .service-list {
             display: flex;
             flex-direction: column;
-            gap: 30px; /* Space between service items */
-            padding-top: 1.5rem; /* Align content slightly better with the title */
+            gap: 30px; 
+            padding-top: 1.5rem; 
         }
 
-        /*
-        --- Card Flip Styling ---
-        */
-
-        /* Service item now acts as a 3D container */
+    
+       
         .service-item {
-            perspective: 1000px; /* Creates the 3D space */
-            background-color: transparent; /* Remove background from the container */
+            perspective: 1000px; 
+            background-color: transparent; 
             border: none;
             height: 12rem;
         }
 
-        /* The inner element that will be flipped */
         .service-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
             transition: transform 0.8s;
             transform-style: preserve-3d;
-            cursor: pointer; /* Shows it's clickable */
+            cursor: pointer; 
         }
 
-        /* Shared styles for both front and back faces */
+        
         .service-card-front,
         .service-card-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            -webkit-backface-visibility: hidden; /* For Safari */
-            backface-visibility: hidden; /* Hides the back of the element when flipped */
+            -webkit-backface-visibility: hidden; 
+            backface-visibility: hidden; 
 
-            /* Re-apply original item styles here */
+           
             padding: 2.5rem;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             background-color: #f9f9f9;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            box-sizing: border-box; /* Ensures padding doesn't affect width/height */
+            box-sizing: border-box; 
         }
 
-        /* Prevent text selection when clicking */
+        
         .service-card-front, 
         .service-card-back {
             user-select: none;
             -webkit-user-select: none;
         }
 
-        /* Position the back face behind the front face */
+        
         .service-card-back {
             transform: rotateX(180deg);
         }
 
         .service-item .service-title {
-            font-size: 1.5rem; /* 24px */
+            font-size: 1.5rem; 
             font-weight: 600;
             margin-top: 0;
             margin-bottom: 10px;
         }
 
         .service-item .service-description {
-            font-size: 1rem; /* 16px */
+            font-size: 1rem; 
             color: #555;
             margin-bottom: 0;
             text-align: justify;
         }
 
-        /*
-        --- Responsive Design ---
-        */
+        
+        
 
-        /* For tablets and smaller desktops */
         @media (max-width: 992px) {
             .services-grid {
                 gap: 30px;
@@ -651,15 +659,15 @@
             }
         }
 
-        /* For mobile devices */
+      
         @media (max-width: 768px) {
             .services-grid {
-                /* Stack the columns on top of each other */
+                
                 grid-template-columns: 1fr;
             }
 
             .service-list {
-                padding-top: 0; /* Remove top padding on mobile */
+                padding-top: 0; 
             }
 
             .service-intro .section-title,
@@ -667,9 +675,128 @@
                 text-align: center;
             }
             .service-item {
-                min-height: 10rem; /* Ensure consistent touch area */
+                min-height: 10rem; 
             }
         }
+            
+        
+        */
+
+
+/* Services Section Styling */
+.svs-section {
+    padding: 60px 20px; /* Add padding for top/bottom and left/right */
+    text-align: center;
+}
+
+.svs-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content */
+}
+
+/* Section Header (Title and Subtitle) */
+.svs-section-header {
+    max-width: 700px;
+    margin: 0 auto 50px auto; /* Center and add space below */
+}
+
+.svs-section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.svs-section-header p {
+    font-size: 1rem;
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+}
+
+/* Grid Layout for Service Cards */
+.svs-grid {
+    display: grid;
+    /* Create 3 columns of equal width on desktops */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; /* Space between the cards */
+}
+
+/* Individual Service Card Styling */
+.svs-card {
+    background-color: var(--card-background-color);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: left;
+    border: 1px solid var(--card-border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.svs-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.svs-card-icon {
+    margin-bottom: 20px;
+}
+
+.svs-card-icon img {
+    width: 50px; /* Control icon size */
+    height: 50px;
+}
+
+.svs-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.svs-card p {
+    font-size: 0.95rem;
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+}
+
+/* ================================================================= */
+/* Responsive Design: Media Queries */
+/* ================================================================= */
+
+/* For Tablets (e.g., screen widths up to 992px) */
+@media (max-width: 992px) {
+    .svs-grid {
+        /* Switch to 2 columns on tablets */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .svs-section-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* For Mobile Phones (e.g., screen widths up to 768px) */
+@media (max-width: 768px) {
+    .svs-section {
+        padding: 40px 15px;
+    }
+
+    .svs-grid {
+        /* Stack to a single column on mobile */
+        grid-template-columns: 1fr;
+    }
+    
+    .svs-section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .svs-section-header p {
+        font-size: 0.9rem;
+    }
+
+    .svs-card {
+        padding: 30px 25px;
+        text-align: center; /* Center content on mobile for better readability */
+    }
+}
+
 /* --- Container for consistent centering and padding --- */
 .container {
     width: 90%;

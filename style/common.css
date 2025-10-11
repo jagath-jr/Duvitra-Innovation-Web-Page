@@ -1,3 +1,11 @@
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+    outline: none !important;
+}
+
+
+
 /* === Existing Desktop Styles (Unchanged) === */
 body {
   background: linear-gradient(120deg, #ffffff 0%, #ffffff 100%);
@@ -69,11 +77,12 @@ body {
 
 .navbar a.contact:hover {
   background: #222;
+   background-image: linear-gradient(182deg, #FB6D53 1.77%, #FFB61D 97.77%);
   color: #fff;
 }
 
 .navbar a:not(.contact):hover {
-  background: linear-gradient(to bottom, #10e0a4, #00b4d8);
+  background:  linear-gradient(182deg, #FB6D53 1.77%, #FFB61D 97.77%);
   
 }
 
@@ -96,14 +105,14 @@ body {
     width: 100%;
     flex-direction: column;
     background: #fff;
-    padding: 2rem 0;
+    padding: 2rem; /* Adjusted padding for better spacing */
     gap: 1.5rem;
-    transform: translateY(-150%); /* GSAP uses this as the starting point */
+    align-items: flex-start; /* Aligns items to the left */
+    transform: translateY(-150%);
     border-radius: 0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-}  /* Active state for the mobile menu */
-
+}
 
   /* Style the hamburger toggle button */
   .navbar-toggle {
@@ -142,18 +151,17 @@ body {
 /*========Footer section=========*/
         /* General Footer Styling */
 .site-footer {
-    background-color: #050505; /* Fallback color */
-    background-image: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)), 
-                     url('../img/sl_070722_51460_26.jpg');
+     /* Fallback color */
+    background-image: linear-gradient(rgb(255,251,250), rgb(255,251,250));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #ffffff;
+    color: #000000;
     padding: 80px 0 0 0;
     position: relative;
     overflow: hidden;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    height: 90vh;
+    
     z-index: 1; /* This is fine as the container */
     max-width: 100vw;
     margin: 0 auto;
@@ -167,7 +175,7 @@ body {
     transform: translate(-50%, -50%) !important;
     font-size: clamp(6.2rem, 25vw, 25rem);
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(0, 0, 0, 0.2);
     z-index: 100; /* Increased to ensure it's on top */
     pointer-events: none; /* Optional: prevents the text from blocking clicks */
 }
@@ -204,7 +212,7 @@ body {
         }
 
         .footer-about .footer-tagline {
-            font-size: 16px;
+            font-size: 1rem;
             line-height: 1.6;
             margin: 0 0 24px 0;
         }
@@ -220,27 +228,27 @@ body {
             justify-content: center;
             width: 40px;
             height: 40px;
-            border: 1.5px solid #fff;
+            border: 1.5px solid #000000;
             border-radius: 50%;
-            color: #fff;
-            font-size: 16px;
+            color: #0c0c0c;
+            font-size: 1rem;
             text-decoration: none;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .social-icons a:hover {
-            background-color: #fff;
-            color: #000;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         /* Columns 2 & 3: Links & Contact */
         .footer-column h4 {
-            font-size: 14px;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 25px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #a0a0a0;
+            color: #000000;
         }
 
         .footer-links ul,
@@ -257,13 +265,13 @@ body {
 
         .footer-links a,
         .footer-contact a {
-            color: #fff;
+            color: #070707;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #cccccc;
+            color: #383838;
         }
 
         .footer-contact li {
@@ -278,12 +286,39 @@ body {
             font-size: 18px;
             flex-shrink: 0;
             margin-top: 5px;
-            color: #a0a0a0;
+            color: #050505;
         }
         .copyright {
   color: #666;
   margin-top: 2rem;
   font-size: 0.9rem;
+}
+.footer-bottom-unik {
+    background-color: rgba(255, 251, 250, 1);
+    padding: 20px 5% 30px;
+    border-top: 1px solid #363B46;
+    text-align: center;
+}
+
+.footer-social-icons-unik {
+    margin-bottom: 20px;
+}
+
+.footer-social-icons-unik a {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin: 0 12px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social-icons-unik a:hover {
+    transform: scale(1.2) translateY(-2px);
+    color: #cccccc;
+}
+
+.footer-copyright-unik p {
+    margin: 0;
+    font-size: 0.9rem;
 }
 
         /* --- Mobile Responsiveness (Updated) --- */
@@ -295,7 +330,7 @@ body {
 
             .site-footer {
                 padding: 60px 0 0 0;
-                height: 60rem;
+               
             }
 
             .site-footer .container {
